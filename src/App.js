@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
 import pozadina from './pozadina.png';
+import Pocetna from './Pocetna';
 
 function App() {
   return (
@@ -13,6 +14,11 @@ function App() {
       margin: 0
     }}>
           <NavBar />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Pocetna />} />
+            </Routes>
+          </div>
       </div>
     </Router>
   );
