@@ -16,7 +16,7 @@ function App() {
     }}>
           <NavBar />
           <div className="content">
-            <img src={slicica1} alt="" className="slicica1" />
+            <aside><img src={slicica1} alt="" className="slicica1" /></aside>
             <Routes>
               <Route path="/" element={<Pocetna />} />
             </Routes>
