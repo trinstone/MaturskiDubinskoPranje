@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './NavBar';
 import pozadina from './pozadina.png';
 import Pocetna from './Pocetna';
+import slicica1 from './stikeri/slicica1.png'; 
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     }}>
           <NavBar />
           <div className="content">
+            <img src={slicica1} alt="" className="slicica1" />
             <Routes>
               <Route path="/" element={<Pocetna />} />
             </Routes>

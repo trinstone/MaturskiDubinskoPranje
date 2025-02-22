@@ -28,11 +28,18 @@ code {
 }
 
 .navbar a:hover {
-  color: #3e7edf;
+  border-bottom: 3px solid white; /* or whatever colour you'd prefer */
+    
 }
 
 .Pocetna {
-  text-align: center;
+  text-align: left;
   font-size: 15px;
   list-style-position: inside;
+  font-size: 30px;
+}
+
+.slicica1 {
+  float: left;
+  width: 20vw;
 }
