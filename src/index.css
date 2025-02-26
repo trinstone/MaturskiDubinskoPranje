@@ -22,13 +22,13 @@ code {
 }
 
 .navbar a {
+  color: white;
   margin-left: 12px;
   text-decoration: none;
-  color: white;
 }
 
 .navbar a:hover {
-  border-bottom: 3px solid white; /* or whatever colour you'd prefer */
+  border-bottom: 3px solid white;
     
 }
 
@@ -65,4 +65,9 @@ code {
   width: 14vw;      
   height: auto;     
   margin-top: 0.5vw;  
+  color: #3e7edf;
+}
+
+.kontakt {
+  border-top: 5px solid white; 
 }
