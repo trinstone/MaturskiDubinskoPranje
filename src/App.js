@@ -2,7 +2,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
 import pozadina from './pozadina.png';
+import Pocetna from './Pocetna';
+import slicica1 from './stikeri/slicica1.png'; 
 import Kontakt from './Kontakt';
+
 
 function App() {
   return (
@@ -13,8 +16,13 @@ function App() {
       height: '100vh', // The height of the div is 30% of the viewport height
       margin: 0
     }}>
-          <NavBar />
-          <Kontakt />
+          <div className="content">
+            <NavBar />
+            <aside><img src={slicica1} alt="" className="slicica1" /></aside>
+            <Routes>
+              <Route path="/" element={<Pocetna />} />
+            </Routes>
+          </div>
       </div>
     </Router>
   );

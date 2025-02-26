@@ -28,6 +28,43 @@ code {
 }
 
 .navbar a:hover {
+  border-bottom: 3px solid white;
+    
+}
+
+.Pocetna {
+  text-align: left;
+  font-size: 25px;
+  list-style-position: inside;
+}
+
+.slicica1 {
+  float: left;
+  width: 17vw;
+}
+
+.liMasine {
+  list-style: none; 
+  display: flex;            
+  gap: 7vw;                
+  padding: 0;
+  justify-content: left;
+}
+
+.liMasine li {
+  display: flex;
+  flex-direction: column;   
+  align-items: center;      
+  text-align: center;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
+
+
+.liMasine li img {
+  width: 14vw;      
+  height: auto;     
+  margin-top: 0.5vw;  
   color: #3e7edf;
 }
 
