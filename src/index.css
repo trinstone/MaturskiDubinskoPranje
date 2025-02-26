@@ -69,5 +69,6 @@ code {
 }
 
 .kontakt {
-  border-top: 5px solid white; 
+  border-top: 5px solid white;
+  text-align: left; 
 }

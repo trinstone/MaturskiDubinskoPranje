@@ -5,6 +5,7 @@ import pozadina from './pozadina.png';
 import Pocetna from './Pocetna';
 import slicica1 from './stikeri/slicica1.png'; 
 import Kontakt from './Kontakt';
+import Usluge from './Usluge';
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
             <aside><img src={slicica1} alt="" className="slicica1" /></aside>
             <Routes>
               <Route path="/" element={<Pocetna />} />
+              <Route path="/Usluge" element={<Usluge />} />
             </Routes>
+            <Kontakt />
           </div>
       </div>
     </Router>
