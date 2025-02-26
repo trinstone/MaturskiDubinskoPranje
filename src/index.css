@@ -30,3 +30,7 @@ code {
 .navbar a:hover {
   color: #3e7edf;
 }
+
+.kontakt {
+  border-top: 5px solid white; 
+}
