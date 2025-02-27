@@ -8,7 +8,7 @@ const NavBar = () => {
           <Link to="/usluge">USLUGE</Link>
           <Link to="/rezervacije">REZERVACIJE</Link>
           <Link to="/galerija">GALERIJA</Link>
-          <Link to="/kontakt">KONTAKT</Link>
+          <a href="#kontakt">KONTAKT</a>
         </div>
       </nav>
     );

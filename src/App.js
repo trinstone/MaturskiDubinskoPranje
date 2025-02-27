@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 import pozadina from './pozadina.png';
 import Pocetna from './Pocetna';
 import slicica1 from './stikeri/slicica1.png'; 
+import slicica2 from './stikeri/slicica2.png'; 
 import Kontakt from './Kontakt';
 import Usluge from './Usluge';
 
@@ -18,14 +19,16 @@ function App() {
       margin: 0
     }}>
           <div className="content">
-            <NavBar />
+            <nav><NavBar /></nav>
             <aside><img src={slicica1} alt="" className="slicica1" /></aside>
-            <Routes>
-              <Route path="/" element={<Pocetna />} />
-              <Route path="/Usluge" element={<Usluge />} />
-            </Routes>
-            <Kontakt />
+            <main>
+              <Routes>
+                <Route path="/" element={<Pocetna />} />
+                <Route path="/Usluge" element={<Usluge />} />
+              </Routes>
+            </main>
           </div>
+          <footer><Kontakt /></footer>
       </div>
     </Router>
   );
