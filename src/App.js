@@ -27,6 +27,7 @@ function App() {
                 <Route path="/" element={<Pocetna />} />
                 <Route path="/Usluge" element={<Usluge />} />
                 <Route path="/Prijava" element={<Prijava />} />
+                <Route path="/Prijava/register" element={<Prijava />} />
               </Routes>
             </main>
           </div>

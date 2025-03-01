@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+    const navigate = useNavigate();
+
     return (
       <nav className="navbar">
         <div className="links">
@@ -10,12 +12,12 @@ const NavBar = () => {
           <Link to="/galerija">GALERIJA</Link>
           <a href="#kontakt">KONTAKT</a>
           <div className="prijava">
-            <Link to="/Prijava">Registruj se</Link>
-            <button onClick={() => window.location.href = '/Prijava'}>Uloguj se</button>
+            <Link to="/Prijava/register">Registruj se</Link>
+            <button onClick={() => navigate('/Prijava')}>Uloguj se</button> 
           </div>
         </div>
       </nav>
     );
-  }
-   
-  export default NavBar;
+}
+
+export default NavBar;
