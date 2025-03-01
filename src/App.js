@@ -7,6 +7,7 @@ import slicica1 from './stikeri/slicica1.png';
 import slicica2 from './stikeri/slicica2.png'; 
 import Kontakt from './Kontakt';
 import Usluge from './Usluge';
+import Prijava from './Prijava';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Pocetna />} />
                 <Route path="/Usluge" element={<Usluge />} />
+                <Route path="/Prijava" element={<Prijava />} />
               </Routes>
             </main>
           </div>

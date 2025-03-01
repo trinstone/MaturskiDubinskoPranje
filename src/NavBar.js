@@ -10,8 +10,8 @@ const NavBar = () => {
           <Link to="/galerija">GALERIJA</Link>
           <a href="#kontakt">KONTAKT</a>
           <div className="prijava">
-            <Link to="/prijava">Registruj se</Link>
-            <button onClick="window.location.href='/prijava'">Uloguj se</button>
+            <Link to="/Prijava">Registruj se</Link>
+            <button onClick={() => window.location.href = '/Prijava'}>Uloguj se</button>
           </div>
         </div>
       </nav>

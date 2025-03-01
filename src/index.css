@@ -141,3 +141,82 @@ th, td {
   font-size: 1.3vw;
   text-align: left;
 }
+
+#auth-form {
+  background-color: white;
+  padding: 40px 60px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin: 0 auto; /* Centering the form horizontally */
+}
+
+/* Title Styling */
+#form-title {
+  font-size: 32px;
+  color: DarkSlateGray; /* Using a color name */
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 1px solid LightGray; /* Light gray border */
+  border-radius: 6px;
+  font-size: 16px;
+  color: DimGray; /* Dim gray text */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: DodgerBlue; /* Border turns blue when focused */
+  outline: none; /* Remove default outline on focus */
+}
+
+/* Submit Button (Login/Register) Styling */
+#submit-btn {
+  background-color: Black; /* Black button background */
+  color: white; /* White text color */
+  padding: 14px 20px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-btn:hover {
+  background-color: DarkGray; /* Dark gray on hover */
+}
+
+/* Toggle Link Text */
+#toggle-text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: DarkSlateGray; /* Dark color for the toggle text */
+}
+
+#toggle-text a {
+  color: DodgerBlue; /* Blue text for the link */
+  text-decoration: none;
+}
+
+#toggle-text a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Styling for the Register and Login Links */
+a {
+  text-decoration: none;
+  color: DarkSlateGray; /* Dark slate gray color for links */
+}
+
+a:hover {
+  color: DodgerBlue; /* Blue color on hover */
+}
