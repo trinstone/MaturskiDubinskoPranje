@@ -160,9 +160,11 @@ th, td {
   margin-bottom: 20px;
 }
 
-/* Input Fields */
+/* Input Fields (For all input fields) */
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
   width: 100%;
   padding: 12px 16px;
   margin-bottom: 20px;
@@ -172,8 +174,11 @@ input[type="password"] {
   color: DimGray; /* Dim gray text */
 }
 
+/* Focus State for Input Fields */
 input[type="email"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus {
   border-color: DodgerBlue; /* Border turns blue when focused */
   outline: none; /* Remove default outline on focus */
 }
@@ -202,13 +207,15 @@ input[type="password"]:focus {
   color: DarkSlateGray; /* Dark color for the toggle text */
 }
 
-#toggle-text a {
+#toggle-text span {
+  cursor: pointer;
   color: DodgerBlue; /* Blue text for the link */
-  text-decoration: none;
+  text-decoration: underline;
 }
 
-#toggle-text a:hover {
-  text-decoration: underline; /* Underline on hover */
+#toggle-text span:hover {
+  color: DarkSlateGray; /* Slight change on hover */
+  text-decoration: none;
 }
 
 /* Styling for the Register and Login Links */
@@ -219,4 +226,10 @@ a {
 
 a:hover {
   color: DodgerBlue; /* Blue color on hover */
+}
+
+/* Additional Margin for New Input Fields */
+input[type="text"],
+input[type="tel"] {
+  margin-bottom: 15px; /* Less margin for the name and phone number fields */
 }
