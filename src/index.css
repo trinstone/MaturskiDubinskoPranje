@@ -7,11 +7,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 10vw;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .navbar {
@@ -28,9 +33,111 @@ code {
 }
 
 .navbar a:hover {
+  border-bottom: 3px solid white;
+    
+}
+
+.prijava{
+  position: absolute;
+  right: 20px; /* Pushes to the far right */
+  top: 50%;
+  transform: translateY(-50%); /* Centers vertically */
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between buttons */
+}
+
+.prijava button{
+  background-color: grey;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.prijava button:hover{
+  background-color: darkgrey;
+}
+
+.Pocetna {
+  text-align: left;
+  font-size: 25px;
+  list-style-position: inside;
+}
+
+.slicica1 {
+  float: left;
+  width: 17vw;
+}
+
+.liMasine {
+  list-style: none; 
+  display: flex;            
+  gap: 7vw;                
+  padding: 0;
+  justify-content: left;
+}
+
+.liMasine li {
+  display: flex;
+  flex-direction: column;   
+  align-items: center;      
+  text-align: center;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
+
+
+.liMasine li img {
+  width: 14vw;      
+  height: auto;     
+  margin-top: 0.5vw;  
   color: #3e7edf;
 }
 
 .kontakt {
-  border-top: 5px solid white; 
+  width: 100%;
+  height: 10vw;            /* Height in viewport width units */
+  background-color: black; /* Use color names */
+  color: white;
+  border-top: 0.3vw solid white; /* Solid white top border */
+  padding: 1rem;
+  box-sizing: border-box;
+  
+  /* Text aligned to the left, stacked vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+table {
+  float: left;
+  border-collapse: separate;
+  border-spacing: 10px;   
+  margin: 40px auto;      
+  width: auto;    
+  padding-right: 20px;        
+}
+
+th, td {
+  background-color: #000; 
+  color: #fff;            
+  text-align: center;
+  font-size: 1.3vw;
+  border-radius: 5px;
+  min-width: 100px;       
+  min-height: 80px;       
+  padding: 10px;
+}
+
+.Usluge h1{
+  text-align: left;
+}
+
+.Usluge p{
+  font-size: 1.3vw;
+  text-align: left;
 }

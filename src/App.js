@@ -2,7 +2,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
 import pozadina from './pozadina.png';
+import Pocetna from './Pocetna';
+import slicica1 from './stikeri/slicica1.png'; 
+import slicica2 from './stikeri/slicica2.png'; 
 import Kontakt from './Kontakt';
+import Usluge from './Usluge';
+
 
 function App() {
   return (
@@ -13,8 +18,17 @@ function App() {
       height: '100vh', // The height of the div is 30% of the viewport height
       margin: 0
     }}>
-          <NavBar />
-          <Kontakt />
+          <div className="content">
+            <nav><NavBar /></nav>
+            <aside><img src={slicica1} alt="" className="slicica1" /></aside>
+            <main>
+              <Routes>
+                <Route path="/" element={<Pocetna />} />
+                <Route path="/Usluge" element={<Usluge />} />
+              </Routes>
+            </main>
+          </div>
+          <footer><Kontakt /></footer>
       </div>
     </Router>
   );
