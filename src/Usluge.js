@@ -36,7 +36,8 @@ const Usluge = () => {
                 </tr>
             </tbody>
         </table>
-        <p>*Upozorenje: Ukoliko imate ljubimce povećana cena po dogovoru!</p>
+        <p>Isplata na licu mesta nakon obavljenog pranja.</p>
+        <p>*Upozorenje: Ukoliko imate kućne ljubimce povećana cena po dogovoru!</p>
       </div>
     );
   }

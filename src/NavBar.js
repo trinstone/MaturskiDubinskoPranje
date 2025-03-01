@@ -9,6 +9,10 @@ const NavBar = () => {
           <Link to="/rezervacije">REZERVACIJE</Link>
           <Link to="/galerija">GALERIJA</Link>
           <a href="#kontakt">KONTAKT</a>
+          <div className="prijava">
+            <Link to="/prijava">Registruj se</Link>
+            <button onClick="window.location.href='/prijava'">Uloguj se</button>
+          </div>
         </div>
       </nav>
     );

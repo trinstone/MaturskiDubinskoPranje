@@ -37,6 +37,30 @@ html {
     
 }
 
+.prijava{
+  position: absolute;
+  right: 20px; /* Pushes to the far right */
+  top: 50%;
+  transform: translateY(-50%); /* Centers vertically */
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between buttons */
+}
+
+.prijava button{
+  background-color: grey;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.prijava button:hover{
+  background-color: darkgrey;
+}
+
 .Pocetna {
   text-align: left;
   font-size: 25px;
@@ -94,7 +118,8 @@ table {
   border-collapse: separate;
   border-spacing: 10px;   
   margin: 40px auto;      
-  width: auto;            
+  width: auto;    
+  padding-right: 20px;        
 }
 
 th, td {
@@ -114,4 +139,5 @@ th, td {
 
 .Usluge p{
   font-size: 1.3vw;
+  text-align: left;
 }
