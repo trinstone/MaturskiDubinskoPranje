@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // ✅ Import useNavigate
-import useFetch from "./useFetch"; // Assuming useFetch is in the same folder
 
 const Prijava = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Use navigate from react-router-dom (correct way for v6)
 
   const [isRegistering, setIsRegistering] = useState(location.pathname.toLowerCase() === "/prijava/register");
 
@@ -20,47 +19,52 @@ const Prijava = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   // State for handling API request
-  const [userData, setUserData] = useState(null); // Store data returned by useFetch
   const [isPending, setIsPending] = useState(false); // Handle loading state
   const [error, setError] = useState(null); // Handle error state
-
-  // Use the useFetch hook to handle registration or login
-  const { data, isPending: fetching, error: fetchError } = useFetch(
-    isRegistering ? "http://localhost:5000/users" : "http://localhost:5000/users/login", // URL depends on registration or login
-    "POST",
-    isRegistering ? { email, password, name, lastName, phoneNumber } : { email, password } // Request body
-  );
-
-  useEffect(() => {
-    console.log("Data:", data);  // Log response data
-    console.log("Fetching:", fetching); // Log fetching status
-    console.log("Fetch Error:", fetchError);  // Log fetch errors
-
-    if (fetching) {
-      setIsPending(true);
-    }
-
-    if (fetchError) {
-      setError(fetchError);
-      setIsPending(false);
-    }
-
-    if (data) {
-      setUserData(data);
-      setIsPending(false);
-      if (isRegistering) {
-        console.log("User Registered:", data);
-        navigate("/prijava"); // Redirect to login page after successful registration
-      } else {
-        console.log("User Logged In:", data);
-        navigate("/"); // Redirect to homepage or another page after successful login
-      }
-    }
-  }, [data, fetching, fetchError, isRegistering, navigate]);
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Simulate registering a new user
+    if (isRegistering) {
+      const newUser = { email, password, name, lastName, phoneNumber };
+
+      // Simulate saving to the DB (just pushing to local state)
+      fetch('http://localhost:5000/users/', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      }).then(() => {
+        // After successful registration, redirect to home page
+        navigate("/"); // Correct usage of navigate
+      });
+      console.log("User Registered:", newUser);
+    } else {
+      // Check if the user exists in the database
+      const checkUser = async (email, password) => {
+        try {
+          const response = await fetch('http://localhost:5000/users'); // Assuming your JSON server is running at this URL
+          const users = await response.json();
+
+          // Check if the user exists in the users array
+          const user = users.find(user => user.email === email && user.password === password);
+
+          if (user) {
+            console.log('User found/ user logged in:', user);
+            navigate("/pocetna"); // Redirect to the main page after login
+          } else {
+            console.log('User not found');
+            setError("Invalid credentials"); // Set error if user is not found
+          }
+        } catch (error) {
+          console.error('Error fetching users:', error);
+          setError('An error occurred while trying to fetch users.');
+        }
+      };
+
+      checkUser(email, password);
+    }
   };
 
   return (

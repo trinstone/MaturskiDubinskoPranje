@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = (url, method = 'GET', body = null) => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -8,46 +8,35 @@ const useFetch = (url, method = 'GET', body = null) => {
   useEffect(() => {
     const abortCont = new AbortController();
 
-    const fetchData = async () => {
-      try {
-        let options = {
-          method,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        };
-
-        if (body) {
-          options.body = JSON.stringify(body);
-        }
-
-        const response = await fetch(url, options);
-        if (!response.ok) {
-          throw new Error('Could not fetch the data');
-        }
-
-        const jsonData = await response.json();
-        setData(jsonData);
+    setTimeout(() => {
+      fetch(url, { signal: abortCont.signal })
+      .then(res => {
+        if (!res.ok) { // error coming back from server
+          throw Error('could not fetch the data for that resource');
+        } 
+        return res.json();
+      })
+      .then(data => {
         setIsPending(false);
+        setData(data);
         setError(null);
-      } catch (err) {
+      })
+      .catch(err => {
         if (err.name === 'AbortError') {
-          console.log('fetch aborted');
+          console.log('fetch aborted')
         } else {
+          // auto catches network / connection error
           setIsPending(false);
           setError(err.message);
         }
-      }
-    };
+      })
+    }, 1000);
 
-    fetchData();
-
+    // abort the fetch
     return () => abortCont.abort();
-  }, [url, method, body]);
+  }, [url])
 
   return { data, isPending, error };
-};
-
+}
+ 
 export default useFetch;
-
-

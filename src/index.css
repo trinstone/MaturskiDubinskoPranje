@@ -21,7 +21,7 @@ html {
 
 .navbar {
   padding: 15px;
-  position: sticky;
+  position: sticky;top:0;
   align-items: center;
   background-color: black;
 }

@@ -7,6 +7,14 @@
       "email": "john.doe@example.com",
       "password": "password123",
       "phone": "123-456-7890"
+    },
+    {
+      "id": "7ff9",
+      "email": "67@ui",
+      "password": "opi",
+      "name": "uiruririr",
+      "lastName": "ioooo",
+      "phoneNumber": "87748484"
     }
   ]
 }
