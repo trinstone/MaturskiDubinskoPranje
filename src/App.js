@@ -8,6 +8,7 @@ import slicica2 from './stikeri/slicica2.png';
 import Kontakt from './Kontakt';
 import Usluge from './Usluge';
 import Prijava from './Prijava';
+import Galerija from './Galerija';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/Usluge" element={<Usluge />} />
                 <Route path="/Prijava" element={<Prijava />} />
                 <Route path="/Prijava/register" element={<Prijava />} />
+                <Route path="/Galerija" element={<Galerija />} />
               </Routes>
             </main>
           </div>

@@ -19,6 +19,10 @@ html {
   scroll-behavior: smooth;
 }
 
+h1 {
+  text-align: left;
+}
+
 .navbar {
   padding: 15px;
   position: sticky;top:0;
@@ -133,10 +137,6 @@ th, td {
   padding: 10px;
 }
 
-.Usluge h1{
-  text-align: left;
-}
-
 .Usluge p{
   font-size: 1.3vw;
   text-align: left;
@@ -232,4 +232,98 @@ a:hover {
 input[type="text"],
 input[type="tel"] {
   margin-bottom: 15px; /* Less margin for the name and phone number fields */
+}
+
+/* Galerija container styling */
+.Galerija-container {
+  width: 60%;
+  margin: 50px auto;
+  text-align: left;
+  color: white;
+}
+
+/* Styling for the image container */
+.Galerija-image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 500px; /* Limit the width of the image container */
+  margin-bottom: 20px;
+}
+
+/* Styling for images */
+.Galerija-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+.Galerija-image:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Button container styling (Positioned under the image) */
+.Galerija-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; /* Adjusted margin to create space below the image */
+  width: 100%; /* Make sure button container is the same width as the image */
+  max-width: 500px; /* Limit the button container's width to match the image's width */
+  margin-left: 0; /* Center the button container horizontally */
+  margin-right: auto; /* Center the button container horizontally */
+}
+
+/* Styling for previous and next buttons */
+.Galerija-prev-button,
+.Galerija-next-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 2em;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+/* Hover effect for buttons */
+.Galerija-prev-button:hover,
+.Galerija-next-button:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .Galerija-container {
+    width: 80%;
+  }
+
+  .Galerija-image {
+    max-width: 100%;
+  }
+
+  .Galerija-prev-button,
+  .Galerija-next-button {
+    font-size: 1.5em; /* Smaller button text on small screens */
+    padding: 10px 16px; /* Adjust button size */
+  }
+}
+
+@media (max-width: 480px) {
+  .Galerija-container {
+    width: 90%;
+  }
+
+  .Galerija-prev-button,
+  .Galerija-next-button {
+    font-size: 1.2em;
+    padding: 8px 14px;
+  }
 }
