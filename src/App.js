@@ -9,6 +9,7 @@ import Kontakt from './Kontakt';
 import Usluge from './Usluge';
 import Prijava from './Prijava';
 import Galerija from './Galerija';
+import Rezervacije from './Rezervacije';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/Prijava" element={<Prijava />} />
                 <Route path="/Prijava/register" element={<Prijava />} />
                 <Route path="/Galerija" element={<Galerija />} />
+                <Route path="/Rezervacije" element={<Rezervacije />} />
               </Routes>
             </main>
           </div>
