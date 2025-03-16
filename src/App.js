@@ -10,32 +10,48 @@ import Usluge from './Usluge';
 import Prijava from './Prijava';
 import Galerija from './Galerija';
 import Rezervacije from './Rezervacije';
-
+import UvodRezervacije from './UvodRezervacije'; // Import the UvodRezervacije component
+import PostojeceRezervacije from './PostojeceRezervacije'; // Import the PostojeceRezervacije component
 
 function App() {
   return (
     <Router>
-      <div className="App" style={{ backgroundImage: `url(${pozadina})`, backgroundSize: '100% auto', // Ensures the whole image fits inside the div
-      backgroundPosition: 'top center', // Centers the image within the div
-      backgroundRepeat: 'no-repeat', // Ensures the image doesn't repeat
-      height: '100vh', // The height of the div is 30% of the viewport height
-      margin: 0
-    }}>
-          <div className="content">
-            <nav><NavBar /></nav>
-            <aside><img src={slicica1} alt="" className="slicica1" /></aside>
-            <main>
-              <Routes>
-                <Route path="/" element={<Pocetna />} />
-                <Route path="/Usluge" element={<Usluge />} />
-                <Route path="/Prijava" element={<Prijava />} />
-                <Route path="/Prijava/register" element={<Prijava />} />
-                <Route path="/Galerija" element={<Galerija />} />
-                <Route path="/Rezervacije" element={<Rezervacije />} />
-              </Routes>
-            </main>
-          </div>
-          <footer><Kontakt /></footer>
+      <div
+        className="App"
+        style={{
+          backgroundImage: `url(${pozadina})`,
+          backgroundSize: '100% auto',
+          backgroundPosition: 'top center',
+          backgroundRepeat: 'no-repeat',
+          height: '100vh',
+          margin: 0,
+        }}
+      >
+        <div className="content">
+          <nav>
+            <NavBar />
+          </nav>
+          <aside>
+            <img src={slicica1} alt="" className="slicica1" />
+          </aside>
+          <main>
+            <Routes>
+              <Route path="/" element={<Pocetna />} />
+              <Route path="/Usluge" element={<Usluge />} />
+              <Route path="/Prijava" element={<Prijava />} />
+              <Route path="/Prijava/register" element={<Prijava />} />
+              <Route path="/Galerija" element={<Galerija />} />
+              <Route path="/Rezervacije" element={<Rezervacije />} />
+              {/* Add UvodRezervacije route */}
+              <Route path="/UvodRezervacije" element={<UvodRezervacije />} />
+              {/* Add dynamic route for user-specific PostojeceRezervacije page */}
+              <Route path="/PostojeceRezervacije/:userId" element={<PostojeceRezervacije />} />
+            </Routes>
+          </main>
+        </div>
+        <footer>
+          <Kontakt />
+        </footer>
       </div>
     </Router>
   );

@@ -8,7 +8,7 @@ const NavBar = () => {
         <div className="links">
           <Link to="/">POČETNA</Link>
           <Link to="/usluge">USLUGE</Link>
-          <Link to="/rezervacije">REZERVACIJE</Link>
+          <Link to="/UvodRezervacije">REZERVACIJE</Link>
           <Link to="/galerija">GALERIJA</Link>
           <a href="#kontakt">KONTAKT</a>
           <div className="prijava">
