@@ -21,7 +21,7 @@ export default function Rezervacije() {
     );
   };
 
-  // Generate time options in 15-minute intervals for a full day
+  // Generate time options in 15-minute intervals
   const generateTimeOptions = () => {
     const times = [];
     for (let hour = 0; hour < 24; hour++) {
@@ -34,6 +34,51 @@ export default function Rezervacije() {
   };
 
   const timeOptions = generateTimeOptions();
+
+  const handleSubmit = async () => {
+    const reservationData = {
+      ime: document.querySelector('input[placeholder="Ime"]').value,
+      prezime: document.querySelector('input[placeholder="Prezime"]').value,
+      adresa: document.querySelector('input[placeholder="Adresa"]').value,
+      kontaktTelefon: document.querySelector('input[placeholder="Kontakt telefon"]').value,
+      datum: selectedDate,
+      vreme: selectedTime,
+      usluge: selectedServices,
+    };
+
+    console.log("Sending reservation data:", reservationData);
+
+    try {
+      const response = await fetch("http://localhost:5000/rezervacije", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reservationData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Reservation successfully created:", data);
+
+      // Clear the form after successful submission
+      document.querySelector('input[placeholder="Ime"]').value = "";
+      document.querySelector('input[placeholder="Prezime"]').value = "";
+      document.querySelector('input[placeholder="Adresa"]').value = "";
+      document.querySelector('input[placeholder="Kontakt telefon"]').value = "";
+      setSelectedDate("");
+      setSelectedTime("00:00");
+      setSelectedServices([]);
+
+      alert("Rezervacija uspešno poslata!");
+    } catch (error) {
+      console.error("Error submitting reservation:", error);
+      alert("Došlo je do greške prilikom slanja rezervacije.");
+    }
+  };
 
   return (
     <div className="rezervacije">
@@ -55,7 +100,7 @@ export default function Rezervacije() {
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="input-field" // Same styling as other inputs
+            className="input-field"
           />
         </div>
 
@@ -66,7 +111,7 @@ export default function Rezervacije() {
             <select
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className="input-field" // Same styling as other inputs
+              className="input-field"
             >
               {timeOptions.map((time) => (
                 <option key={time} value={time}>
@@ -87,7 +132,7 @@ export default function Rezervacije() {
             readOnly
             value={selectedServices.join(", ")}
             placeholder="Odaberi usluge"
-            className="input-field" // Same styling as other inputs
+            className="input-field"
           />
           <button className="dropdown-btn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             ▼
@@ -121,7 +166,7 @@ export default function Rezervacije() {
               <input
                 type="text"
                 placeholder={`Unesite detalje za ${service}`}
-                className="input-field" // Same styling as other inputs
+                className="input-field"
               />
             </div>
           ))}
@@ -129,7 +174,9 @@ export default function Rezervacije() {
       )}
 
       {/* Submit Button */}
-      <button className="submit-btn">Rezerviši</button>
+      <button className="submit-btn" onClick={handleSubmit}>
+        Rezerviši
+      </button>
     </div>
   );
 }
