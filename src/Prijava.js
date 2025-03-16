@@ -52,7 +52,7 @@ const Prijava = () => {
 
           if (user) {
             console.log('User found/ user logged in:', user);
-            navigate("/pocetna"); // Redirect to the main page after login
+            navigate("/"); // Redirect to the main page after login
           } else {
             console.log('User not found');
             setError("Invalid credentials"); // Set error if user is not found

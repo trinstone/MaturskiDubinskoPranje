@@ -4,46 +4,45 @@ import { useNavigate } from "react-router-dom";
 function UvodRezervacije() {
   const navigate = useNavigate();
 
-  // Replace "1" with the actual user ID (e.g., from authentication or state)
-  const userId = 1;
+  // Check if a user is logged in (e.g., by checking local storage or state)
+  const userId = localStorage.getItem("userId"); // Replace with your actual authentication logic
 
   return (
-    <div>
+    <div id="uvod-rezervacije-container">
       {/* Page Title */}
-      <h1>Rezervacije</h1>
+      <h1 id="uvod-rezervacije-title">Rezervacije</h1>
 
-      {/* Navigation Buttons */}
-      <div style={{ marginTop: "20px" }}>
-        <button
-          onClick={() => navigate(`/postojece-rezervacije/${userId}`)} // Navigate to the user's PostojeceRezervacije page
-          style={{
-            marginRight: "10px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "6px",
-            cursor: "pointer",
-          }}
-        >
-          Moje Rezervacije
-        </button>
-        <button
-          onClick={() => navigate("/rezervacije")} // Navigate to the Rezervacije page
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#28a745",
-            color: "white",
-            border: "none",
-            borderRadius: "6px",
-            cursor: "pointer",
-          }}
-        >
-          Napravi Novu Rezervaciju
-        </button>
-      </div>
+      {/* Display content based on whether the user is logged in */}
+      {userId ? (
+        // If the user is logged in, show the buttons
+        <div id="uvod-rezervacije-buttons">
+          <button
+            id="moje-rezervacije-button"
+            onClick={() => navigate(`/postojece-rezervacije/${userId}`)} // Navigate to the user's PostojeceRezervacije page
+          >
+            Moje Rezervacije
+          </button>
+          <button
+            id="napravi-rezervaciju-button"
+            onClick={() => navigate("/rezervacije")} // Navigate to the Rezervacije page
+          >
+            Napravi Novu Rezervaciju
+          </button>
+        </div>
+      ) : (
+        // If no user is logged in, show a message and a link to the registration page
+        <div id="uvod-rezervacije-not-logged-in">
+          <p id="uvod-rezervacije-message">
+            Morate biti registrovani korisnik da biste pristupili ovom delu.
+          </p>
+          <button
+            id="registrujte-se-button"
+            onClick={() => navigate("/Prijava/register")} // Navigate to the registration page
+          >
+            Registrujte se ovde
+          </button>
+        </div>
+      )}
     </div>
   );
 }

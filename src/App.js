@@ -43,9 +43,9 @@ function App() {
               <Route path="/Galerija" element={<Galerija />} />
               <Route path="/Rezervacije" element={<Rezervacije />} />
               {/* Add UvodRezervacije route */}
-              <Route path="/UvodRezervacije" element={<UvodRezervacije />} />
+              <Route path="/UvodRezervacije/" element={<UvodRezervacije />} />
               {/* Add dynamic route for user-specific PostojeceRezervacije page */}
-              <Route path="/PostojeceRezervacije/:userId" element={<PostojeceRezervacije />} />
+              <Route path="/PostojeceRezervacije/:id" element={<PostojeceRezervacije />} />
             </Routes>
           </main>
         </div>
