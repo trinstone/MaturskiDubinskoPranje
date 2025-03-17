@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useKorisnik } from "./KorisnikKontekst"; // Import the user context
 
 function UvodRezervacije() {
   const navigate = useNavigate();
-
-  // Check if a user is logged in (e.g., by checking local storage or state)
-  const userId = localStorage.getItem("userId"); // Replace with your actual authentication logic
+  const { korisnik } = useKorisnik(); // Get logged-in user from context
 
   return (
     <div id="uvod-rezervacije-container">
@@ -13,18 +12,18 @@ function UvodRezervacije() {
       <h1 id="uvod-rezervacije-title">Rezervacije</h1>
 
       {/* Display content based on whether the user is logged in */}
-      {userId ? (
+      {korisnik ? (
         // If the user is logged in, show the buttons
         <div id="uvod-rezervacije-buttons">
           <button
             id="moje-rezervacije-button"
-            onClick={() => navigate(`/postojece-rezervacije/${userId}`)} // Navigate to the user's PostojeceRezervacije page
+            onClick={() => navigate(`/PostojeceRezervacije/${korisnik.id}`)} // Use user ID from context
           >
             Moje Rezervacije
           </button>
           <button
             id="napravi-rezervaciju-button"
-            onClick={() => navigate("/rezervacije")} // Navigate to the Rezervacije page
+            onClick={() => navigate("/Rezervacije")} // Navigate to the Rezervacije page
           >
             Napravi Novu Rezervaciju
           </button>
