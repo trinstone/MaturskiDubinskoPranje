@@ -27,13 +27,20 @@
   ],
   "rezervacije": [
     {
-      "id": "89a6",
-      "adresa": "moja adresa",
-      "datum": "2025-04-02",
-      "vreme": "13:00",
+      "id": "bfca",
+      "korisnikId": "1",
+      "adresa": "moja adresa2",
+      "datum": "2025-03-27",
+      "vreme": "09:30",
       "usluge": [
-        "Tvrde površine",
-        "Staklene površine"
+        {
+          "naziv": "Stolica",
+          "detalji": "67"
+        },
+        {
+          "naziv": "Tvrde površine",
+          "detalji": "velik pod pre svega"
+        }
       ]
     }
   ]

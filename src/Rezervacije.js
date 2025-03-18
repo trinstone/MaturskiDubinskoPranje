@@ -1,33 +1,35 @@
 import React, { useState } from "react";
+import { useKorisnik } from "./KorisnikKontekst"; // Import user context
 
 export default function Rezervacije() {
+  const { korisnik } = useKorisnik();
   const [selectedServices, setSelectedServices] = useState([]);
+  const [serviceDetails, setServiceDetails] = useState({});
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("00:00");
 
-  const serviceOptions = [
-    "Stolica",
-    "Trosed",
-    "Tepih",
-    "Auto",
-    "Tvrde površine",
-    "Staklene površine",
-  ];
+  const serviceOptions = ["Stolica", "Trosed", "Tepih", "Auto", "Tvrde površine", "Staklene površine"];
 
   const toggleService = (service) => {
     setSelectedServices((prev) =>
       prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
     );
+    setServiceDetails((prev) => ({
+      ...prev,
+      [service]: prev[service] || "", // Keep existing details or initialize empty
+    }));
   };
 
-  // Generate time options in 15-minute intervals
+  const handleDetailChange = (service, value) => {
+    setServiceDetails((prev) => ({ ...prev, [service]: value }));
+  };
+
   const generateTimeOptions = () => {
     const times = [];
     for (let hour = 0; hour < 24; hour++) {
       for (let minute = 0; minute < 60; minute += 15) {
-        const formattedTime = `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
-        times.push(formattedTime);
+        times.push(`${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`);
       }
     }
     return times;
@@ -36,11 +38,20 @@ export default function Rezervacije() {
   const timeOptions = generateTimeOptions();
 
   const handleSubmit = async () => {
+    if (!korisnik) {
+      alert("Morate biti prijavljeni da biste napravili rezervaciju.");
+      return;
+    }
+
     const reservationData = {
+      korisnikId: korisnik.id,
       adresa: document.querySelector('input[placeholder="Adresa"]').value,
       datum: selectedDate,
       vreme: selectedTime,
-      usluge: selectedServices,
+      usluge: selectedServices.map((service) => ({
+        naziv: service,
+        detalji: serviceDetails[service] || "", // Include user-inputted details
+      })),
     };
 
     console.log("Sending reservation data:", reservationData);
@@ -61,11 +72,12 @@ export default function Rezervacije() {
       const data = await response.json();
       console.log("Reservation successfully created:", data);
 
-      // Clear the form after successful submission
+      // Clear form after submission
       document.querySelector('input[placeholder="Adresa"]').value = "";
       setSelectedDate("");
       setSelectedTime("00:00");
       setSelectedServices([]);
+      setServiceDetails({});
 
       alert("Rezervacija uspešno poslata!");
     } catch (error) {
@@ -78,71 +90,41 @@ export default function Rezervacije() {
     <div className="rezervacije">
       <h2>Rezervacija</h2>
 
-      {/* Standard Input Fields - Two Columns */}
       <div className="input-grid">
-        {/* Only Adresa field remains */}
         <div className="input-group">
           <label>Adresa:</label>
           <input type="text" placeholder="Adresa" className="input-field" />
         </div>
 
-        {/* Date Input for Datum */}
         <div className="input-group">
           <label>Datum:</label>
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="input-field"
-          />
+          <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className="input-field" />
         </div>
 
-        {/* Vreme and Usluge in the same row */}
         <div className="input-group-row">
-          {/* Vreme Dropdown */}
           <div className="input-group">
             <label>Vreme:</label>
-            <div className="time-dropdown">
-              <select
-                value={selectedTime}
-                onChange={(e) => setSelectedTime(e.target.value)}
-                className="input-field"
-              >
-                {timeOptions.map((time) => (
-                  <option key={time} value={time}>
-                    {time}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <select value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} className="input-field">
+              {timeOptions.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
+            </select>
           </div>
 
-          {/* Usluge Input */}
           <div className="input-group">
             <label>Usluge:</label>
             <div className="usluge-input">
-              <input
-                type="text"
-                readOnly
-                value={selectedServices.join(", ")}
-                placeholder="Odaberi usluge"
-                className="input-field"
-              />
-              <button className="dropdown-btn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                ▼
-              </button>
+              <input type="text" readOnly value={selectedServices.join(", ")} placeholder="Odaberi usluge" className="input-field" />
+              <button className="dropdown-btn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>▼</button>
             </div>
 
-            {/* Dropdown Content */}
             {isDropdownOpen && (
               <div className="dropdown-content">
                 {serviceOptions.map((service) => (
                   <label key={service} className="dropdown-item">
-                    <input
-                      type="checkbox"
-                      checked={selectedServices.includes(service)}
-                      onChange={() => toggleService(service)}
-                    />
+                    <input type="checkbox" checked={selectedServices.includes(service)} onChange={() => toggleService(service)} />
                     {service}
                   </label>
                 ))}
@@ -153,26 +135,18 @@ export default function Rezervacije() {
         </div>
       </div>
 
-      {/* Dynamically Generated Inputs for Selected Services */}
       {selectedServices.length > 0 && (
         <div className="input-grid">
           {selectedServices.map((service) => (
             <div key={service} className="input-group">
               <label>{service}:</label>
-              <input
-                type="text"
-                placeholder={`Unesite detalje za ${service}`}
-                className="input-field"
-              />
+              <input type="text" placeholder={`Unesite detalje za ${service}`} value={serviceDetails[service] || ""} onChange={(e) => handleDetailChange(service, e.target.value)} className="input-field" />
             </div>
           ))}
         </div>
       )}
 
-      {/* Submit Button */}
-      <button className="submit-btn" onClick={handleSubmit}>
-        Rezerviši
-      </button>
+      <button className="submit-btn" onClick={handleSubmit}>Rezerviši</button>
     </div>
   );
 }
