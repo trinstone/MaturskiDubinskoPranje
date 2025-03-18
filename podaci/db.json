@@ -24,5 +24,17 @@
       "lastName": "efeffeffffp",
       "phoneNumber": "6534324242"
     }
+  ],
+  "rezervacije": [
+    {
+      "id": "89a6",
+      "adresa": "moja adresa",
+      "datum": "2025-04-02",
+      "vreme": "13:00",
+      "usluge": [
+        "Tvrde površine",
+        "Staklene površine"
+      ]
+    }
   ]
 }
