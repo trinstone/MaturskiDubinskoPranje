@@ -11,7 +11,7 @@ const PostojeceRezervacije = () => {
 
     const fetchRezervacije = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/rezervacije?userId=${korisnik.id}`);
+        const response = await fetch(`http://localhost:8080/api/rezervacije?userId=${korisnik.id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch reservations");
         }

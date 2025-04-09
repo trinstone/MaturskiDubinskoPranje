@@ -57,7 +57,7 @@ export default function Rezervacije() {
     console.log("Sending reservation data:", reservationData);
 
     try {
-      const response = await fetch("http://localhost:5000/rezervacije/", {
+      const response = await fetch("http://localhost:8080/api/rezervacije", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
