@@ -27,32 +27,45 @@ const Prijava = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (isRegistering) {
       // Register a new user
-      const newUser = { email, password, name, lastName, phoneNumber };
-
+      const newUser = {
+        mejl: email,
+        sifra: password,
+        ime: name,
+        prezime: lastName,
+        brTelefon: phoneNumber
+      };
+  
       try {
-        await fetch('http://localhost:8080/api/klijenti', {
+        const response = await fetch('http://localhost:8080/api/klijenti', {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser)
         });
-
-        console.log("User Registered:", newUser);
-        setKorisnik(newUser); // Save user to context
+  
+        if (!response.ok) {
+          const errorMsg = await response.text();
+          throw new Error(`Server error: ${errorMsg}`);
+        }
+  
+        const savedUser = await response.json(); // Assuming backend returns saved user
+        console.log("User Registered:", savedUser);
+        setKorisnik(savedUser); // Save user to context
         navigate("/"); // Redirect after registration
       } catch (error) {
         console.error("Error registering user:", error);
+        setError("Registration failed. " + error.message);
       }
     } else {
       // Login process
       try {
         const response = await fetch('http://localhost:8080/api/klijenti');
         const users = await response.json();
-
-        const user = users.find(user => user.email === email && user.password === password);
-
+  
+        const user = users.find(user => user.mejl === email && user.sifra === password);
+  
         if (user) {
           console.log('User logged in:', user);
           setKorisnik(user); // Save logged-in user to context
