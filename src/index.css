@@ -9,7 +9,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding-bottom: 10vw;
 }
-
+main{
+  min-height: 90vh;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -25,7 +27,9 @@ h1 {
 
 .navbar {
   padding: 15px;
-  position: sticky; top: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
   align-items: center;
   background-color: black;
 }

@@ -4,7 +4,6 @@ import { useKorisnik } from "./KorisnikKontekst"; // Import user context
 export default function Rezervacije() {
   const { korisnik } = useKorisnik();
   const [selectedServices, setSelectedServices] = useState([]);
-  const [serviceDetails, setServiceDetails] = useState({});
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("00:00");
@@ -22,17 +21,20 @@ export default function Rezervacije() {
   ];
 
   const toggleService = (service) => {
-    setSelectedServices((prev) =>
-      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
-    );
-    setServiceDetails((prev) => ({
-      ...prev,
-      [service]: prev[service] || "", // Keep existing details or initialize empty
-    }));
+    if(selectedServices.some(s => s.service === service))
+    {
+            setSelectedServices((prev) =>
+        prev.filter((s) => s.service !== service));
+    }
+    else{
+      setSelectedServices((prev) =>
+        [...prev, {service: service, detail: "" }]
+      );
+    }
   };
 
   const handleDetailChange = (service, value) => {
-    setServiceDetails((prev) => ({ ...prev, [service]: value }));
+    setSelectedServices((prev) => prev.map((s)=>s.service === service ? {service: service,detail: value}:s));
   };
 
   const generateTimeOptions = () => {
@@ -55,15 +57,16 @@ export default function Rezervacije() {
 
     // Map selected services to their IDs
     const selectedServiceIds = selectedServices.map(serviceName => {
-      const service = serviceOptions.find(option => option.name === serviceName);
+      const service = serviceOptions.find(option => option.name === serviceName.service);
       return service ? service.id : null;
     }).filter(id => id !== null); // Remove null values if any service name is invalid
-
+    const selectedServiceDetails = selectedServices.map(s => s.detail);
     const reservationData = {
-      klijent: { id: korisnik.id }, // Updated: Klijent should be an object, not just the ID
+      mejl: korisnik.mejl, // Updated: Klijent should be an object, not just the ID
       adresa: adresa,  // Using React state for 'Adresa'
       datumVreme: `${selectedDate}T${selectedTime}:00`, // Ensure full datetime format for backend
-      usluge: selectedServiceIds, // Send IDs instead of names
+      uslugeIds: selectedServiceIds,
+      detaljiUsluga: selectedServiceDetails, // Send IDs instead of names
       napomena: napomena,  // Using React state for 'Napomena'
     };
 
@@ -90,7 +93,6 @@ export default function Rezervacije() {
       setSelectedDate("");
       setSelectedTime("00:00");
       setSelectedServices([]);
-      setServiceDetails({});
       setNapomena("");
 
       alert("Rezervacija uspešno poslata!");
@@ -148,7 +150,7 @@ export default function Rezervacije() {
               <input
                 type="text"
                 readOnly
-                value={selectedServices.join(", ")}
+                value={selectedServices.map(s=>s.service).join(", ")}
                 placeholder="Odaberi usluge"
                 className="input-field"
               />
@@ -166,7 +168,7 @@ export default function Rezervacije() {
                   <label key={service.name} className="dropdown-item">
                     <input
                       type="checkbox"
-                      checked={selectedServices.includes(service.name)}
+                      checked={selectedServices.some(s => s.service === service.name)}
                       onChange={() => toggleService(service.name)}
                     />
                     {service.name}
@@ -184,13 +186,13 @@ export default function Rezervacije() {
       {selectedServices.length > 0 && (
         <div className="input-grid">
           {selectedServices.map((service) => (
-            <div key={service} className="input-group">
-              <label>{service}:</label>
+            <div key={service.service} className="input-group">
+              <label>{service.service}:</label>
               <input
                 type="text"
-                placeholder={`Unesite detalje za ${service}`}
-                value={serviceDetails[service] || ""}
-                onChange={(e) => handleDetailChange(service, e.target.value)}
+                placeholder={`Unesite detalje za ${service.service}`}
+                value={service.detail}
+                onChange={(e) => handleDetailChange(service.service, e.target.value)}
                 className="input-field"
               />
             </div>
