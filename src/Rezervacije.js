@@ -103,115 +103,117 @@ export default function Rezervacije() {
   };
 
   return (
-    <div className="rezervacije">
-      <h2>Rezervacija</h2>
+    <main>
+      <div className="rezervacije">
+        <h2>Rezervacija</h2>
 
-      <div className="input-grid">
-        <div className="input-group">
-          <label>Adresa:</label>
-          <input
-            type="text"
-            placeholder="Adresa"
-            className="input-field"
-            value={adresa}  // Use state for 'Adresa'
-            onChange={(e) => setAdresa(e.target.value)}  // Update state when input changes
-          />
-        </div>
-
-        <div className="input-group">
-          <label>Datum:</label>
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="input-field"
-          />
-        </div>
-
-        <div className="input-group-row">
+        <div className="input-grid">
           <div className="input-group">
-            <label>Vreme:</label>
-            <select
-              value={selectedTime}
-              onChange={(e) => setSelectedTime(e.target.value)}
+            <label>Adresa:</label>
+            <input
+              type="text"
+              placeholder="Adresa"
               className="input-field"
-            >
-              {timeOptions.map((time) => (
-                <option key={time} value={time}>
-                  {time}
-                </option>
-              ))}
-            </select>
+              value={adresa}  // Use state for 'Adresa'
+              onChange={(e) => setAdresa(e.target.value)}  // Update state when input changes
+            />
           </div>
 
           <div className="input-group">
-            <label>Usluge:</label>
-            <div className="usluge-input">
-              <input
-                type="text"
-                readOnly
-                value={selectedServices.map(s=>s.service).join(", ")}
-                placeholder="Odaberi usluge"
+            <label>Datum:</label>
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="input-field"
+            />
+          </div>
+
+          <div className="input-group-row">
+            <div className="input-group">
+              <label>Vreme:</label>
+              <select
+                value={selectedTime}
+                onChange={(e) => setSelectedTime(e.target.value)}
                 className="input-field"
-              />
-              <button
-                className="dropdown-btn"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                ▼
-              </button>
+                {timeOptions.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            {isDropdownOpen && (
-              <div className="dropdown-content">
-                {serviceOptions.map((service) => (
-                  <label key={service.name} className="dropdown-item">
-                    <input
-                      type="checkbox"
-                      checked={selectedServices.some(s => s.service === service.name)}
-                      onChange={() => toggleService(service.name)}
-                    />
-                    {service.name}
-                  </label>
-                ))}
-                <button className="ok-btn" onClick={() => setIsDropdownOpen(false)}>
-                  OK
+            <div className="input-group">
+              <label>Usluge:</label>
+              <div className="usluge-input">
+                <input
+                  type="text"
+                  readOnly
+                  value={selectedServices.map(s=>s.service).join(", ")}
+                  placeholder="Odaberi usluge"
+                  className="input-field"
+                />
+                <button
+                  className="dropdown-btn"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                  ▼
                 </button>
               </div>
-            )}
+
+              {isDropdownOpen && (
+                <div className="dropdown-content">
+                  {serviceOptions.map((service) => (
+                    <label key={service.name} className="dropdown-item">
+                      <input
+                        type="checkbox"
+                        checked={selectedServices.some(s => s.service === service.name)}
+                        onChange={() => toggleService(service.name)}
+                      />
+                      {service.name}
+                    </label>
+                  ))}
+                  <button className="ok-btn" onClick={() => setIsDropdownOpen(false)}>
+                    OK
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      {selectedServices.length > 0 && (
-        <div className="input-grid">
-          {selectedServices.map((service) => (
-            <div key={service.service} className="input-group">
-              <label>{service.service}:</label>
-              <input
-                type="text"
-                placeholder={`Unesite detalje za ${service.service}`}
-                value={service.detail}
-                onChange={(e) => handleDetailChange(service.service, e.target.value)}
-                className="input-field"
-              />
-            </div>
-          ))}
+        {selectedServices.length > 0 && (
+          <div className="input-grid">
+            {selectedServices.map((service) => (
+              <div key={service.service} className="input-group">
+                <label>{service.service}:</label>
+                <input
+                  type="text"
+                  placeholder={`Unesite detalje za ${service.service}`}
+                  value={service.detail}
+                  onChange={(e) => handleDetailChange(service.service, e.target.value)}
+                  className="input-field"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="input-group">
+          <label>Napomena:</label>
+          <input
+            type="text"
+            placeholder="Unesite napomenu"
+            value={napomena}  // Using state for 'Napomena'
+            onChange={(e) => setNapomena(e.target.value)}  // Update state when input changes
+            className="input-field"
+          />
         </div>
-      )}
 
-      <div className="input-group">
-        <label>Napomena:</label>
-        <input
-          type="text"
-          placeholder="Unesite napomenu"
-          value={napomena}  // Using state for 'Napomena'
-          onChange={(e) => setNapomena(e.target.value)}  // Update state when input changes
-          className="input-field"
-        />
+        <button className="submit-btn" onClick={handleSubmit}>Rezerviši</button>
       </div>
-
-      <button className="submit-btn" onClick={handleSubmit}>Rezerviši</button>
-    </div>
+    </main>
   );
 }

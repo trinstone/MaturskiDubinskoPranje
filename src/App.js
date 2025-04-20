@@ -6,6 +6,8 @@ import pozadina from './pozadina.png';
 import Pocetna from './Pocetna';
 import slicica1 from './stikeri/slicica1.png'; 
 import slicica2 from './stikeri/slicica2.png'; 
+import slicica3 from './stikeri/slicica3.png';
+import slicica4 from './stikeri/slicica4.png';
 import Kontakt from './Kontakt';
 import Usluge from './Usluge';
 import Prijava from './Prijava';
@@ -30,12 +32,8 @@ function App() {
           }}
         >
           <div className="content">
-            <nav>
               <NavBar />
-            </nav>
-            <aside>
               <img src={slicica1} alt="" className="slicica1" />
-            </aside>
             <main>
               <Routes>
                 <Route path="/" element={<Pocetna />} />
@@ -48,10 +46,11 @@ function App() {
                 <Route path="/PostojeceRezervacije/:id" element={<PostojeceRezervacije />} />
               </Routes>
             </main>
-          </div>
-          <footer>
+              <img src={slicica2} alt="" className="slicica2" />
+              <img src={slicica4} alt="" className="slicica4" />
+              <img src={slicica3} alt="" className="slicica3" />
             <Kontakt />
-          </footer>
+          </div>
         </div>
       </Router>
     </KorisnikProvajder>

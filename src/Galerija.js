@@ -18,16 +18,18 @@ const Galerija = () => {
   };
 
   return (
-    <div className="Galerija-container">
-      <h1 className="Galerija-title">Galerija</h1>
-      <div className="Galerija-image-container">
-        <img src={images[currentIndex]} alt="Gallery" className="Galerija-image" />
+    <main>
+      <div className="Galerija-container">
+        <h1 className="Galerija-title">Galerija</h1>
+        <div className="Galerija-image-container">
+          <img src={images[currentIndex]} alt="Gallery" className="Galerija-image" />
+        </div>
+        <div className="Galerija-button-container">
+          <button className="Galerija-prev-button" onClick={prevImage}>&lt;</button>
+          <button className="Galerija-next-button" onClick={nextImage}>&gt;</button>
+        </div>
       </div>
-      <div className="Galerija-button-container">
-        <button className="Galerija-prev-button" onClick={prevImage}>&lt;</button>
-        <button className="Galerija-next-button" onClick={nextImage}>&gt;</button>
-      </div>
-    </div>
+    </main>
   );
 };
 

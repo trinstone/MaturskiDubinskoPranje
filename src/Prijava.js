@@ -82,31 +82,33 @@ const Prijava = () => {
   };
 
   return (
-    <div id="auth-form">
-      <h1 id="form-title">{isRegistering ? "Register" : "Login"}</h1>
-      <form id="form" onSubmit={handleSubmit}>
-        {isRegistering && (
-          <>
-            <input type="text" id="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-            <input type="text" id="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-            <input type="tel" id="phoneNumber" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
-          </>
-        )}
+    <main>
+      <div id="auth-form">
+        <h1 id="form-title">{isRegistering ? "Register" : "Login"}</h1>
+        <form id="form" onSubmit={handleSubmit}>
+          {isRegistering && (
+            <>
+              <input type="text" id="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+              <input type="text" id="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+              <input type="tel" id="phoneNumber" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+            </>
+          )}
 
-        <input type="email" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit" id="submit-btn" disabled={isPending}>{isRegistering ? "Register" : "Login"}</button>
-      </form>
-      {isPending && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>Error: {error}</p>}
-      <p id="toggle-text">
-        {isRegistering ? (
-          <>Already have an account? <span onClick={() => navigate("/prijava")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Login</span></>
-        ) : (
-          <>Don't have an account? <span onClick={() => navigate("/prijava/register")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Register</span></>
-        )}
-      </p>
-    </div>
+          <input type="email" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <button type="submit" id="submit-btn" disabled={isPending}>{isRegistering ? "Register" : "Login"}</button>
+        </form>
+        {isPending && <p>Loading...</p>}
+        {error && <p style={{ color: "red" }}>Error: {error}</p>}
+        <p id="toggle-text">
+          {isRegistering ? (
+            <>Already have an account? <span onClick={() => navigate("/prijava")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Login</span></>
+          ) : (
+            <>Don't have an account? <span onClick={() => navigate("/prijava/register")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Register</span></>
+          )}
+        </p>
+      </div>
+    </main>
   );
 };
 

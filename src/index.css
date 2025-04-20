@@ -10,7 +10,8 @@ body {
   padding-bottom: 10vw;
 }
 main{
-  min-height: 90vh;
+  padding-top: 1%;
+  min-height: 80vh;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -32,6 +33,7 @@ h1 {
   width: 100%;
   align-items: center;
   background-color: black;
+  z-index: 1;
 }
 
 .navbar a {
@@ -77,6 +79,25 @@ h1 {
 .slicica1 {
   float: left;
   width: 17vw;
+  padding-top: 3%;
+}
+
+.slicica2 {
+  float: left;
+  width: 15vw;
+  vertical-align: bottom;
+}
+
+.slicica3 {
+  float: right;
+  width: 10vw;
+  vertical-align: bottom;
+}
+
+.slicica4 {
+  float: right;
+  width: 15vw;
+  vertical-align: bottom;
 }
 
 .liMasine {
@@ -101,6 +122,8 @@ h1 {
   height: auto;
   margin-top: 0.5vw;
   color: #3e7edf;
+  border: solid black;
+  border-radius: 6px;
 }
 
 .kontakt {
@@ -217,10 +240,6 @@ input[type='tel']:focus {
 a {
   text-decoration: none;
   color: DarkSlateGray;
-}
-
-a:hover {
-  color: DodgerBlue;
 }
 
 input[type='text'],

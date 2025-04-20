@@ -33,30 +33,32 @@ const PostojeceRezervacije = () => {
   }
 
   return (
-    <div>
-      <h1>Postojeće Rezervacije</h1>
-      {loading ? (
-        <p>Učitavanje rezervacija...</p>
-      ) : rezervacije.length > 0 ? (
-        <ul>
-          {rezervacije.map((rezervacija) => (
-            <li key={rezervacija.id}>
-              <strong>Datum:</strong> {rezervacija.datumVreme}, <strong>Adresa:</strong> {rezervacija.adresa}, <strong>Usluge:</strong>
-              {/* Loop through usluge and display each service */}
-              {rezervacija.usluge && rezervacija.usluge.length > 0
-                ? rezervacija.usluge.map((usluga, index) => (
-                    <div key={index}>
-                      <p><strong>{usluga.naziv}</strong>: {usluga.detalji}</p> {/* Adjust the properties as per your backend structure */}
-                    </div>
-                  ))
-                : "No usluge available"}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Nemate nijednu rezervaciju.</p>
-      )}
-    </div>
+    <main>
+      <div>
+        <h1>Postojeće Rezervacije</h1>
+        {loading ? (
+          <p>Učitavanje rezervacija...</p>
+        ) : rezervacije.length > 0 ? (
+          <ul>
+            {rezervacije.map((rezervacija) => (
+              <li key={rezervacija.id}>
+                <strong>Datum:</strong> {rezervacija.datumVreme}, <strong>Adresa:</strong> {rezervacija.adresa}, <strong>Usluge:</strong>
+                {/* Loop through usluge and display each service */}
+                {rezervacija.usluge && rezervacija.usluge.length > 0
+                  ? rezervacija.usluge.map((usluga, index) => (
+                      <div key={index}>
+                        <p><strong>{usluga.naziv}</strong>: {usluga.detalji}</p> {/* Adjust the properties as per your backend structure */}
+                      </div>
+                    ))
+                  : "No usluge available"}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Nemate nijednu rezervaciju.</p>
+        )}
+      </div>
+    </main>
   );
 };
 
