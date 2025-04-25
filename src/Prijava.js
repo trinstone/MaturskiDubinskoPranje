@@ -39,7 +39,7 @@ const Prijava = () => {
       };
   
       try {
-        const response = await fetch('http://localhost:8080/api/klijenti', {
+        const response = await fetch('http://localhost:8080/api/klijenti/', {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser)
@@ -61,7 +61,7 @@ const Prijava = () => {
     } else {
       // Login process
       try {
-        const response = await fetch('http://localhost:8080/api/klijenti');
+        const response = await fetch('http://localhost:8080/api/klijenti/');
         const users = await response.json();
   
         const user = users.find(user => user.mejl === email && user.sifra === password);
