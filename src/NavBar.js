@@ -1,18 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useKorisnik } from "./KorisnikKontekst"; // Adjust path if necessary
+import { useKorisnik } from "./KorisnikKontekst"; 
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const { korisnik, setKorisnik } = useKorisnik(); // Use the correct context
+  const { korisnik, setKorisnik } = useKorisnik(); 
 
   const handleLogout = () => {
-    setKorisnik(null); // Clear user data
-    localStorage.removeItem("userId"); // Remove userId from local storage if used
-    navigate("/"); // Redirect to login page
+    setKorisnik(null); 
+    localStorage.removeItem("userId"); 
+    navigate("/"); 
   };
 
   return (
-    <nav className="navbar">
+    <nav>
       <div className="links">
         <Link to="/">POČETNA</Link>
         <Link to="/usluge">USLUGE</Link>

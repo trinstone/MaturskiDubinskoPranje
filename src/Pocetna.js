@@ -6,7 +6,7 @@ const Pocetna = () => {
 
     return(
         <main>
-            <div className="Pocetna">
+            <div id="Pocetna">
                 <h1>Dubinsko pranje i čišćenje raznih površina</h1>
                 <section>
                     Dajte povrsinu, mi cemo je ocistiti. Preko tvrdih podnih površina

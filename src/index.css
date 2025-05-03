@@ -1,7 +1,9 @@
 body {
   background-color: black;
   color: white;
-  margin: 0;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -26,24 +28,36 @@ h1 {
   text-align: left;
 }
 
-.navbar {
-  padding: 15px;
+nav {
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 5vw;       
+  right: 5vw;      
+  padding: 15px;
   align-items: center;
   background-color: black;
   z-index: 1;
+  max-width: calc(100% - 10vw); 
 }
 
-.navbar a {
+nav a {
   color: white;
   margin-left: 12px;
   text-decoration: none;
 }
 
-.navbar a:hover {
+nav a:hover {
   border-bottom: 3px solid white;
+}
+
+#pozadinaMargina{
+  position: fixed;
+  bottom: 0;
+  left: 0; 
+  right: 0;
+  width: 100%;
+  height: 100%; 
+  z-index: -1; 
 }
 
 .prijava {
@@ -63,17 +77,25 @@ h1 {
   padding: 8px 15px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1vw;
 }
 
 .prijava button:hover {
   background-color: darkgrey;
 }
 
-.Pocetna {
-  text-align: left;
+#Pocetna {
+  text-align: center;
   font-size: 25px;
   list-style-position: inside;
+}
+
+#Pocetna ol{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0; 
+  list-style-position: inside; 
 }
 
 .slicica1 {
@@ -105,7 +127,7 @@ h1 {
   display: flex;
   gap: 7vw;
   padding: 0;
-  justify-content: left;
+  justify-content: center;
 }
 
 .liMasine li {
@@ -560,36 +582,34 @@ input[type="date"].input-field {
   margin-top: 20px;
 }
 
-/* Moje Rezervacije Button */
 #moje-rezervacije-button {
   padding: 1vw 2vw;
   font-size: 1.2vw;
-  background-color: #007bff;
+  background-color: black;
   color: white;
-  border: none;
-  border-radius: 6px;
+  border: solid white;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #moje-rezervacije-button:hover {
-  background-color: #0056b3;
+  background-color: gray;
 }
 
-/* Napravi Novu Rezervaciju Button */
 #napravi-rezervaciju-button {
   padding: 1vw 2vw;
   font-size: 1.2vw;
-  background-color: #28a745;
+  background-color: black;
   color: white;
-  border: none;
-  border-radius: 6px;
+  border: solid white;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #napravi-rezervaciju-button:hover {
-  background-color: #218838;
+  background-color: gray;
 }
 
 /* Not Logged In Message */
@@ -607,14 +627,86 @@ input[type="date"].input-field {
 #registrujte-se-button {
   padding: 1vw 2vw;
   font-size: 1.2vw;
-  background-color: #007bff;
+  background-color: black;
   color: white;
-  border: none;
-  border-radius: 6px;
+  border: solid white;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #registrujte-se-button:hover {
-  background-color: #0056b3;
+  background-color: gray;
+}
+
+.calendar-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fefefe;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.calendar-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-navigation button {
+  background-color: #0066cc;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.calendar-navigation button:hover {
+  background-color: #0052a3;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.day-button {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f7f7f7;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.day-button:hover {
+  background-color: #e0eaff;
+}
+
+.day-button.empty {
+  background-color: transparent;
+  border: none;
+  cursor: default;
+}
+
+.month-title{
+  z-index: 10;
 }

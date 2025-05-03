@@ -3,6 +3,7 @@ import { KorisnikProvajder } from './KorisnikKontekst'; // Import the context pr
 import './App.css';
 import NavBar from './NavBar';
 import pozadina from './pozadina.png';
+import pozadinaMargina from './pozadinaMargine.jpg';
 import Pocetna from './Pocetna';
 import slicica1 from './stikeri/slicica1.png'; 
 import slicica2 from './stikeri/slicica2.png'; 
@@ -15,6 +16,7 @@ import Galerija from './Galerija';
 import Rezervacije from './Rezervacije';
 import UvodRezervacije from './UvodRezervacije';
 import PostojeceRezervacije from './PostojeceRezervacije';
+import Radnik from './Radnik';
 
 function App() {
   return (
@@ -28,11 +30,12 @@ function App() {
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
             height: '100vh',
-            margin: 0,
+            margin: 0
           }}
         >
           <div className="content">
               <NavBar />
+              <img src={pozadinaMargina} alt="" id="pozadinaMargina" />
               <img src={slicica1} alt="" className="slicica1" />
             <main>
               <Routes>
@@ -44,6 +47,7 @@ function App() {
                 <Route path="/Rezervacije" element={<Rezervacije />} />
                 <Route path="/UvodRezervacije/" element={<UvodRezervacije />} />
                 <Route path="/PostojeceRezervacije/:id" element={<PostojeceRezervacije />} />
+                <Route path="/Radnik/" element={<Radnik />} />
               </Routes>
             </main>
               <img src={slicica2} alt="" className="slicica2" />
