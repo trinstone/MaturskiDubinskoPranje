@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; 
 import { useKorisnik } from "./KorisnikKontekst"; // Import the user context
+import './cssPojedinacni/Prijava.css';
 
 const Prijava = () => {
   const location = useLocation();

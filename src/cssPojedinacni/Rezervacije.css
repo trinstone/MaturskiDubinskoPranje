@@ -1,0 +1,192 @@
+.rezervacije {
+    padding: 20px;
+  }
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rezervacije input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid LightGray;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    color: DimGray;
+    background-color: white;
+    box-sizing: border-box;
+    height: 48px; /* Ensure all inputs have the same height */
+  }
+  
+  /* Ensure the date input field matches other input fields */
+  input[type="date"].input-field {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: 1px solid LightGray;
+    border-radius: 6px;
+    font-size: 16px;
+    color: DimGray;
+    background-color: white;
+    box-sizing: border-box;
+    height: 48px; /* Ensure all inputs have the same height */
+  }
+  
+  /* Ensure the time dropdown matches other input fields */
+  .time-dropdown select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid LightGray;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 16px;
+    color: DimGray;
+    box-sizing: border-box;
+    height: 48px; /* Ensure all inputs have the same height */
+  }
+  
+  /* Ensure all input fields in the grid have consistent styling */
+  .input-grid .input-group input,
+  .input-grid .input-group select {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: 1px solid LightGray;
+    border-radius: 6px;
+    font-size: 16px;
+    color: DimGray;
+    background-color: white;
+    box-sizing: border-box;
+    height: 48px; /* Ensure all inputs have the same height */
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .input-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* New CSS for aligning Vreme and Usluge */
+  .input-group-row {
+    display: flex;
+    gap: 20px; /* Adjust the gap between Vreme and Usluge */
+    align-items: flex-start; /* Align items at the top */
+    width: 100%;
+  }
+  
+  .input-group-row .input-group {
+    flex: 1; /* Each input group takes equal space */
+  }
+  
+  .usluge-container {
+    width: 100%; /* Ensure the container takes full width */
+  }
+  
+  .usluge-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px; /* Add spacing between input and button */
+  }
+  
+  .usluge-input input {
+    flex-grow: 1;
+    padding: 12px 16px; /* Match padding of other input fields */
+    font-size: 16px; /* Match font size of other input fields */
+    border: 1px solid LightGray; /* Match border of other input fields */
+    border-radius: 6px; /* Match border radius of other input fields */
+    background-color: white; /* Match background color of other input fields */
+    color: DimGray; /* Match text color of other input fields */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    height: 48px; /* Ensure all inputs have the same height */
+  }
+  
+  /* Ensure the Usluge button matches other input fields */
+  .dropdown-btn {
+    padding: 12px 16px; /* Match padding of other input fields */
+    background: #444; /* Dark gray background */
+    color: white; /* White text */
+    border: 1px solid LightGray; /* Match border of other input fields */
+    border-radius: 6px; /* Match border radius of other input fields */
+    cursor: pointer;
+    font-size: 16px; /* Match font size of other input fields */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    height: 48px; /* Ensure all inputs have the same height */
+  }
+  
+  .dropdown-btn:hover {
+    background: #666; /* Slightly lighter gray on hover */
+  }
+  
+  /* Ensure the dropdown content aligns with the input fields */
+  .dropdown-content {
+    background: #333; /* Dark background for dropdown */
+    border: 1px solid #555; /* Match border of other input fields */
+    border-radius: 0.3vw; /* Smaller border radius */
+    margin-top: 0.2vw;
+    padding: 0.5vw; /* Reduced padding */
+    position: absolute;
+    z-index: 10;
+    width: 12vw; /* Reduced width */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    font-size: 1vw; /* Smaller font size */
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.3vw; /* Reduced padding */
+    color: white;
+    cursor: pointer;
+    font-size: 1vw; /* Smaller font size */
+  }
+  
+  .dropdown-item:hover {
+    background: #555; /* Slightly lighter gray on hover */
+  }
+  
+  .ok-btn {
+    margin-top: 0.3vw; /* Reduced margin */
+    width: 100%;
+    padding: 0.5vw 0.8vw; /* Reduced padding */
+    background: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 0.3vw; /* Smaller border radius */
+    cursor: pointer;
+    font-size: 1vw; /* Smaller font size */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .ok-btn:hover {
+    background: #0056b3; /* Darker blue on hover */
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 12px 16px; /* Match padding of other input fields */
+    background: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 6px; /* Match border radius of other input fields */
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px; /* Match font size of other input fields */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .submit-btn:hover {
+    background: #0056b3; /* Darker blue on hover */
+  }

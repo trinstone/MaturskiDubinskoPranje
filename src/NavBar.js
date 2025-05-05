@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useKorisnik } from "./KorisnikKontekst"; 
+import './cssPojedinacni/NavBar.css';
 
 const NavBar = () => {
   const navigate = useNavigate();

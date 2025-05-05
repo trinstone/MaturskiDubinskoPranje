@@ -1,3 +1,5 @@
+import './cssPojedinacni/Usluge.css';
+
 const Usluge = () => {
     return (
         <main>

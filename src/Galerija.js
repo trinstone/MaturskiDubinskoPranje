@@ -3,6 +3,7 @@ import stolice1 from './galerija/stolice1.png';
 import stolice2 from './galerija/stolice2.png';
 import stolice3 from './galerija/stolice3.png'; // Add more images as necessary
 import stolice4 from './galerija/stolice4.png';
+import './cssPojedinacni/Galerija.css';
 
 const images = [stolice1, stolice2, stolice3, stolice4]; // Array to hold image paths
 

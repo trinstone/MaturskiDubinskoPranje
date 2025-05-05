@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useKorisnik } from "./KorisnikKontekst"; // Import the user context
+import './cssPojedinacni/UvodRezervacije.css';
 
 function UvodRezervacije() {
   const navigate = useNavigate();

@@ -1,0 +1,21 @@
+nav {
+    position: fixed;
+    top: 0;
+    left: 5vw;       
+    right: 5vw;      
+    padding: 15px;
+    align-items: center;
+    background-color: black;
+    z-index: 1;
+    max-width: calc(100% - 10vw); 
+  }
+  
+  nav a {
+    color: white;
+    margin-left: 12px;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    border-bottom: 3px solid white;
+  }

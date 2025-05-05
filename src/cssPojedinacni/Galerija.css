@@ -1,0 +1,87 @@
+.Galerija-container {
+    width: 60%;
+    margin: 50px auto;
+    text-align: left;
+    color: white;
+  }
+  
+  .Galerija-image-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+  
+  .Galerija-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .Galerija-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .Galerija-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  .Galerija-prev-button,
+  .Galerija-next-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+  }
+  
+  .Galerija-prev-button:hover,
+  .Galerija-next-button:hover {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    .Galerija-container {
+      width: 80%;
+    }
+  
+    .Galerija-image {
+      max-width: 100%;
+    }
+  
+    .Galerija-prev-button,
+    .Galerija-next-button {
+      font-size: 1.5em;
+      padding: 10px 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Galerija-container {
+      width: 90%;
+    }
+  
+    .Galerija-prev-button,
+    .Galerija-next-button {
+      font-size: 1.2em;
+      padding: 8px 14px;
+    }
+  }
+  

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useKorisnik } from "./KorisnikKontekst";
+import './cssPojedinacni/Radnik.css';
 
 const Radnik = () => {
   const korisnik = useKorisnik();

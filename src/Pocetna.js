@@ -1,6 +1,7 @@
 import masine1 from './masine/kercherDP.png';
 import masine2 from './masine/opremaStaklo.png';
 import masine3 from './masine/masinaPod.png';
+import './cssPojedinacni/Pocetna.css';
 
 const Pocetna = () => {
 
