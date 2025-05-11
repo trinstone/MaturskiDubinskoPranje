@@ -1,25 +1,4 @@
-table {
-    float: left;
-    border-collapse: separate;
-    border-spacing: 10px;
-    margin: 40px auto;
-    width: auto;
-    padding-right: 20px;
-  }
-  
-  th,
-  td {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    font-size: 1.3vw;
-    border-radius: 5px;
-    min-width: 100px;
-    min-height: 80px;
-    padding: 10px;
-  }
-  
-  .Usluge p {
+    .Usluge p {
     font-size: 1.3vw;
     text-align: left;
   }

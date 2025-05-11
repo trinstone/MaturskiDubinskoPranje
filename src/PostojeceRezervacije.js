@@ -34,31 +34,53 @@ const PostojeceRezervacije = () => {
 
   return (
     <main>
-      <div>
-        <h1>Postojeće Rezervacije</h1>
-        {loading ? (
-          <p>Učitavanje rezervacija...</p>
-        ) : rezervacije.length > 0 ? (
-          <ul>
-            {rezervacije.map((rezervacija) => (
-              <li key={rezervacija.id}>
-                <strong>Datum:</strong> {rezervacija.datumVreme}, <strong>Adresa:</strong> {rezervacija.adresa}, <strong>Usluge:</strong>
-                {/* Loop through usluge and display each service */}
-                {rezervacija.usluge && rezervacija.usluge.length > 0
-                  ? rezervacija.usluge.map((usluga, index) => (
-                      <div key={index}>
-                        <p><strong>{usluga.naziv}</strong>: {usluga.detalji}</p> {/* Adjust the properties as per your backend structure */}
-                      </div>
-                    ))
-                  : "No usluge available"}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>Nemate nijednu rezervaciju.</p>
-        )}
-      </div>
-    </main>
+    <div>
+      <h1>Postojeće Rezervacije</h1>
+      {loading ? (
+        <p>Učitavanje rezervacija...</p>
+      ) : rezervacije.length > 0 ? (
+        rezervacije.map((rezervacija) => (
+          <table key={rezervacija.id}>
+            <thead>
+              <tr>
+                <th colSpan="2">
+                  Rezervacija #{rezervacija.id}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Datum</td>
+                <td>{rezervacija.datumVreme}</td>
+              </tr>
+              <tr>
+                <td className="reservation-cell reservation-cell-bold">Adresa</td>
+                <td className="reservation-cell">{rezervacija.adresa}</td>
+              </tr>
+              <tr>
+                <td>Usluge</td>
+                <td>
+                  {rezervacija.usluge && rezervacija.usluge.length > 0 ? (
+                    <ul>
+                      {rezervacija.usluge.map((usluga, index) => (
+                        <li key={index}>
+                          <strong>{usluga.naziv}</strong>: {usluga.detalji}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    "Nema usluga"
+                  )}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        ))
+      ) : (
+        <p>Nemate nijednu rezervaciju.</p>
+      )}
+    </div>
+  </main>
   );
 };
 
