@@ -70,7 +70,7 @@ const Radnik = () => {
         {monthOffset < 3 && <button onClick={() => setMonthOffset(monthOffset + 1)}>Sledeći</button>}
       </div>
 
-      <h3 className="month-title" style={{ color: 'red' }}>
+      <h3 className="month-title" style={{ color: 'black' }}>
         {monthNames[monthDate.getMonth()]} {monthDate.getFullYear()}
       </h3>
 

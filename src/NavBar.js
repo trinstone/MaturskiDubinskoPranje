@@ -15,12 +15,11 @@ const NavBar = () => {
   return (
     <nav>
       <div className="links">
-        <Link to="/">POČETNA</Link>
-        
         {isRadnik() ? (
           <Link to="/Radnik">REZERVACIJE</Link>
         ) : (
           <>
+          <Link to="/">POČETNA</Link>
             <Link to="/usluge">USLUGE</Link>
             <Link to="/UvodRezervacije">REZERVACIJE</Link>
             <Link to="/galerija">GALERIJA</Link>
