@@ -1,84 +1,93 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; 
-import { useKorisnik } from "./KorisnikKontekst"; // Import the user context
+import { useKorisnik } from "./KorisnikKontekst"; 
 import './cssPojedinacni/Prijava.css';
 
 const Prijava = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { setKorisnik } = useKorisnik(); // Get setKorisnik from context
+  const { setKorisnik } = useKorisnik(); 
 
   const [isRegistering, setIsRegistering] = useState(location.pathname.toLowerCase() === "/prijava/register");
+  const [isRadnik, setIsRadnik] = useState(false);
 
   useEffect(() => {
     setIsRegistering(location.pathname.toLowerCase() === "/prijava/register");
   }, [location.pathname]);
 
-  // State for form inputs
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-
-  // State for handling API request
+ 
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    if (isRegistering) {
-      // Register a new user
-      const newUser = {
-        mejl: email,
-        sifra: password,
-        ime: name,
-        prezime: lastName,
-        brTelefon: phoneNumber
-      };
-  
-      try {
-        const response = await fetch('http://localhost:8080/api/klijenti/', {
+    setIsPending(true);
+    setError(null);
+
+    try {
+      if (isRegistering) {
+        // Determine if this is a Radnik registration
+        const isRadnikRegistration = email.includes('@dubinskop');
+        
+        const newUser = {
+          mejl: email,
+          sifra: password,
+          ime: name,
+          prezime: lastName,
+          brTelefon: phoneNumber
+        };
+
+        const endpoint = isRadnikRegistration 
+          ? 'http://localhost:8080/api/radnici/'
+          : 'http://localhost:8080/api/klijenti/';
+
+        const response = await fetch(endpoint, {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser)
         });
-  
+
         if (!response.ok) {
           const errorMsg = await response.text();
           throw new Error(`Server error: ${errorMsg}`);
         }
-  
-        const savedUser = await response.json(); // Assuming backend returns saved user
-        console.log("User Registered:", savedUser);
-        setKorisnik(savedUser); // Save user to context
-        navigate("/"); // Redirect after registration
-      } catch (error) {
-        console.error("Error registering user:", error);
-        setError("Registration failed. " + error.message);
-      }
-    } else {
-      // Login process
-      try {
-        const response = await fetch('http://localhost:8080/api/klijenti/');
-        const users = await response.json();
-  
-        const user = users.find(user => user.mejl === email && user.sifra === password);
-  
+
+        const savedUser = await response.json();
+        setKorisnik(savedUser);
+        navigate(isRadnikRegistration ? "/Radnik" : "/");
+      } else {
+        // Login process - check both klijenti and radnici
+        const [klijentiResponse, radniciResponse] = await Promise.all([
+          fetch('http://localhost:8080/api/klijenti/'),
+          fetch('http://localhost:8080/api/radnici/')
+        ]);
+
+        const [klijenti, radnici] = await Promise.all([
+          klijentiResponse.json(),
+          radniciResponse.json()
+        ]);
+
+        const user = [...klijenti, ...radnici].find(
+          user => user.mejl === email && user.sifra === password
+        );
+
         if (user) {
-          console.log('User logged in:', user);
-          setKorisnik(user); // Save logged-in user to context
-          navigate("/"); // Redirect after login
+          setKorisnik(user);
+          navigate(user.mejl.includes('@dubinskop') ? "/Radnik" : "/");
         } else {
-          console.log('User not found');
           setError("Invalid credentials");
         }
-      } catch (error) {
-        console.error('Error fetching users:', error);
-        setError('An error occurred while trying to fetch users.');
       }
+    } catch (error) {
+      console.error("Error:", error);
+      setError(error.message || "An error occurred");
+    } finally {
+      setIsPending(false);
     }
   };
 
@@ -95,19 +104,36 @@ const Prijava = () => {
             </>
           )}
 
-          <input type="email" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <button type="submit" id="submit-btn" disabled={isPending}>{isRegistering ? "Register" : "Login"}</button>
+          <input 
+            type="email" 
+            id="email" 
+            placeholder="Email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+          />
+          <button type="submit" id="submit-btn" disabled={isPending}>
+            {isPending ? "Processing..." : (isRegistering ? "Register" : "Login")}
+          </button>
         </form>
-        {isPending && <p>Loading...</p>}
         {error && <p style={{ color: "red" }}>Error: {error}</p>}
-        <p id="toggle-text">
-          {isRegistering ? (
-            <>Already have an account? <span onClick={() => navigate("/prijava")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Login</span></>
-          ) : (
-            <>Don't have an account? <span onClick={() => navigate("/prijava/register")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Register</span></>
-          )}
-        </p>
+        {!isRadnik && (
+          <p id="toggle-text">
+            {isRegistering ? (
+              <>Already have an account? <span onClick={() => navigate("/prijava")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Login</span></>
+            ) : (
+              <>Don't have an account? <span onClick={() => navigate("/prijava/register")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Register</span></>
+            )}
+          </p>
+        )}
       </div>
     </main>
   );

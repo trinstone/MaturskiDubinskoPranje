@@ -4,7 +4,7 @@ import './cssPojedinacni/NavBar.css';
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const { korisnik, setKorisnik } = useKorisnik(); 
+  const { korisnik, setKorisnik, isRadnik } = useKorisnik(); 
 
   const handleLogout = () => {
     setKorisnik(null); 
@@ -16,12 +16,22 @@ const NavBar = () => {
     <nav>
       <div className="links">
         <Link to="/">POČETNA</Link>
-        <Link to="/usluge">USLUGE</Link>
-        <Link to="/UvodRezervacije">REZERVACIJE</Link>
-        <Link to="/galerija">GALERIJA</Link>
-        <a href="#kontakt">KONTAKT</a>
+        
+        {isRadnik() ? (
+          <Link to="/Radnik">REZERVACIJE</Link>
+        ) : (
+          <>
+            <Link to="/usluge">USLUGE</Link>
+            <Link to="/UvodRezervacije">REZERVACIJE</Link>
+            <Link to="/galerija">GALERIJA</Link>
+            <a href="#kontakt">KONTAKT</a>
+          </>
+        )}
+
         <div className="prijava">
-          {!korisnik && <Link to="/Prijava/register">Registruj se</Link>}
+          {!korisnik && !isRadnik() && (
+            <Link to="/Prijava/register">Registruj se</Link>
+          )}
           <button onClick={korisnik ? handleLogout : () => navigate("/Prijava")}>
             {korisnik ? "Izloguj se" : "Uloguj se"}
           </button>

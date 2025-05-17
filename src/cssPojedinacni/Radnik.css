@@ -69,3 +69,20 @@
   .month-title{
     z-index: 10;
   }
+
+  .has-reservations {
+  background-color: #d1e7dd;
+  position: relative;
+}
+
+.reservation-count {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+}

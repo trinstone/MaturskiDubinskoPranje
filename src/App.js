@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { KorisnikProvajder } from './KorisnikKontekst'; // Import the context provider
+import { KorisnikProvajder } from './KorisnikKontekst'; 
 import './App.css';
 import NavBar from './NavBar';
 import pozadina from './pozadina.png';
@@ -20,7 +20,7 @@ import Radnik from './Radnik';
 
 function App() {
   return (
-    <KorisnikProvajder> {/* Wrap the entire app with the provider */}
+    <KorisnikProvajder> 
       <Router>
         <div
           className="App"
