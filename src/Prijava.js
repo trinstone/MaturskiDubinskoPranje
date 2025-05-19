@@ -31,7 +31,6 @@ const Prijava = () => {
 
     try {
       if (isRegistering) {
-        // Determine if this is a Radnik registration
         const isRadnikRegistration = email.includes('@dubinskop');
         
         const newUser = {
@@ -53,15 +52,30 @@ const Prijava = () => {
         });
 
         if (!response.ok) {
-          const errorMsg = await response.text();
-          throw new Error(`Server error: ${errorMsg}`);
+          const errorText = await response.text();
+          try {
+            // Try to parse JSON error
+            const errorData = JSON.parse(errorText);
+            if (errorData.message?.includes('duplicate key') || 
+                errorData.message?.includes('already exists')) {
+              throw new Error('Ovaj email je već registrovan. Molimo prijavite se ili koristite drugi email.');
+            }
+            throw new Error(errorData.message || 'Došlo je do greške prilikom registracije');
+          } catch {
+            // If not JSON, use raw error text
+            if (errorText.includes('duplicate key') || 
+                errorText.includes('already exists')) {
+              throw new Error('Ovaj email je već registrovan. Molimo prijavite se ili koristite drugi email.');
+            }
+            throw new Error(errorText || 'Došlo je do greške prilikom registracije');
+          }
         }
 
         const savedUser = await response.json();
         setKorisnik(savedUser);
         navigate(isRadnikRegistration ? "/Radnik" : "/");
       } else {
-        // Login process - check both klijenti and radnici
+        // Login process remains the same
         const [klijentiResponse, radniciResponse] = await Promise.all([
           fetch('http://localhost:8080/api/klijenti/'),
           fetch('http://localhost:8080/api/radnici/')
@@ -80,12 +94,12 @@ const Prijava = () => {
           setKorisnik(user);
           navigate(user.mejl.includes('@dubinskop') ? "/Radnik" : "/");
         } else {
-          setError("Invalid credentials");
+          setError("Pogrešni kredencijali. Pokušajte ponovo.");
         }
       }
     } catch (error) {
       console.error("Error:", error);
-      setError(error.message || "An error occurred");
+      setError(error.message);
     } finally {
       setIsPending(false);
     }
@@ -94,20 +108,20 @@ const Prijava = () => {
   return (
     <main>
       <div id="auth-form">
-        <h1 id="form-title">{isRegistering ? "Register" : "Login"}</h1>
+        <h1 id="form-title">{isRegistering ? "Registracija" : "Login"}</h1>
         <form id="form" onSubmit={handleSubmit}>
           {isRegistering && (
             <>
-              <input type="text" id="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-              <input type="text" id="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-              <input type="tel" id="phoneNumber" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+              <input type="text" id="name" placeholder="Ime" value={name} onChange={(e) => setName(e.target.value)} required />
+              <input type="text" id="lastName" placeholder="Prezime" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+              <input type="tel" id="phoneNumber" placeholder="Broj telefona" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
             </>
           )}
 
           <input 
             type="email" 
             id="email" 
-            placeholder="Email" 
+            placeholder="Mejl" 
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
             required 
@@ -115,25 +129,33 @@ const Prijava = () => {
           <input 
             type="password" 
             id="password" 
-            placeholder="Password" 
+            placeholder="Lozinka" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
             required 
           />
           <button type="submit" id="submit-btn" disabled={isPending}>
-            {isPending ? "Processing..." : (isRegistering ? "Register" : "Login")}
+            {isPending ? "Učitavanje..." : (isRegistering ? "Registracija" : "Login")}
           </button>
         </form>
-        {error && <p style={{ color: "red" }}>Error: {error}</p>}
-        {!isRadnik && (
-          <p id="toggle-text">
-            {isRegistering ? (
-              <>Already have an account? <span onClick={() => navigate("/prijava")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Login</span></>
-            ) : (
-              <>Don't have an account? <span onClick={() => navigate("/prijava/register")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Register</span></>
-            )}
+        {error && (
+          <p style={{ 
+            color: "red",
+            backgroundColor: "#ffeeee",
+            padding: "10px",
+            borderRadius: "5px",
+            marginTop: "10px"
+          }}>
+            {error}
           </p>
         )}
+        <p id="toggle-text">
+          {isRegistering ? (
+            <>Već imate nalog? <span onClick={() => navigate("/prijava")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Login</span></>
+          ) : (
+            <>Nemate nalog? <span onClick={() => navigate("/prijava/register")} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>Registracija</span></>
+          )}
+        </p>
       </div>
     </main>
   );

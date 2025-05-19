@@ -77,7 +77,7 @@ const PostojeceRezervacije = () => {
           </table>
         ))
       ) : (
-        <p>Nemate nijednu rezervaciju.</p>
+        <p id="BezRez">Nemate nijednu rezervaciju.</p>
       )}
     </div>
   </main>

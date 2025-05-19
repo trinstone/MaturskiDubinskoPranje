@@ -23,8 +23,9 @@ function App() {
     <KorisnikProvajder> 
       <Router>
         <div
-          className="App"
+          id="App"
           style={{
+            backgroundColor: 'black',
             backgroundImage: `url(${pozadina})`,
             backgroundSize: '100% auto',
             backgroundPosition: 'top center',
@@ -35,7 +36,8 @@ function App() {
         >
           <div className="content">
               <NavBar />
-              <img src={pozadinaMargina} alt="" id="pozadinaMargina" />
+              <img src={pozadinaMargina} alt="" id="pozadinaMargina1" />
+              <img src={pozadinaMargina} alt="" id="pozadinaMargina2" />
               <img src={slicica1} alt="" className="slicica1" />
             <main>
               <Routes>

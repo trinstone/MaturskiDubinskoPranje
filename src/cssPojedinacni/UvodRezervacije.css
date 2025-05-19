@@ -1,17 +1,15 @@
-/* UvodRezervacije Container */
 #uvod-rezervacije-container {
     text-align: center;
     padding: 20px;
   }
   
-  /* Page Title */
   #uvod-rezervacije-title {
     font-size: 2.5vw;
     color: white;
     margin-bottom: 20px;
   }
   
-  /* Buttons Container */
+
   #uvod-rezervacije-buttons {
     display: flex;
     justify-content: center;
@@ -49,7 +47,7 @@
     background-color: gray;
   }
   
-  /* Not Logged In Message */
+
   #uvod-rezervacije-not-logged-in {
     margin-top: 20px;
   }
@@ -60,7 +58,6 @@
     margin-bottom: 20px;
   }
   
-  /* Registrujte Se Button */
   #registrujte-se-button {
     padding: 1vw 2vw;
     font-size: 1.2vw;
@@ -74,4 +71,17 @@
   
   #registrujte-se-button:hover {
     background-color: gray;
+  }
+
+  #BezRez{
+   background-color: black;
+  border: 0.2vw solid white;
+  border-radius: 0.5vw;
+  padding: 1vw;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  width: 5vw;
+  max-width: 10%;
+  margin: 3vw auto;
   }
