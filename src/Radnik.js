@@ -112,7 +112,7 @@ const Radnik = () => {
               <tbody>
                 <tr>
                   <td>Datum</td>
-                  <td>{rezervacija.datumVreme}</td>
+                  <td>{rezervacija.datumVreme.split('T')[0]}  {rezervacija.datumVreme.split('T')[1]}</td>
                 </tr>
                 <tr>
                   <td className="reservation-cell reservation-cell-bold">Adresa</td>
