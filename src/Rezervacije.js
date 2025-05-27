@@ -152,16 +152,11 @@ export default function Rezervacije() {
                 <input
                   type="text"
                   readOnly
-                  value={selectedServices.map(s=>s.service).join(", ")}
+                  value={selectedServices.map(s => s.service).join(", ")}
                   placeholder="Odaberi usluge"
                   className="input-field"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)} // Toggle dropdown on input click
                 />
-                <button
-                  className="dropdown-btn"
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                >
-                  ▼
-                </button>
               </div>
 
               {isDropdownOpen && (
