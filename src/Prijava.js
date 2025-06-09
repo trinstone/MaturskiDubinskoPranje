@@ -24,86 +24,94 @@ const Prijava = () => {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsPending(true);
-    setError(null);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsPending(true);
+  setError(null);
 
-    try {
-      if (isRegistering) {
-        const isRadnikRegistration = email.includes('@dubinskop');
-        
-        const newUser = {
-          mejl: email,
-          sifra: password,
-          ime: name,
-          prezime: lastName,
-          brTelefon: phoneNumber
-        };
+  try {
+    if (isRegistering) {
+      // Registration code remains the same
+      const isRadnikRegistration = email.includes('@dubinskop');
+      
+      const newUser = {
+        mejl: email,
+        sifra: password,
+        ime: name,
+        prezime: lastName,
+        brTelefon: phoneNumber
+      };
 
-        const endpoint = isRadnikRegistration 
-          ? 'http://localhost:8080/api/radnici/'
-          : 'http://localhost:8080/api/klijenti/';
+      const endpoint = isRadnikRegistration 
+        ? 'http://localhost:8080/api/radnici/' 
+        : 'http://localhost:8080/api/klijenti/';
 
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUser)
-        });
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      });
 
-        if (!response.ok) {
-          const errorText = await response.text();
-          try {
-            // Try to parse JSON error
-            const errorData = JSON.parse(errorText);
-            if (errorData.message?.includes('duplicate key') || 
-                errorData.message?.includes('already exists')) {
-              throw new Error('Ovaj email je već registrovan. Molimo prijavite se ili koristite drugi email.');
-            }
-            throw new Error(errorData.message || 'Došlo je do greške prilikom registracije');
-          } catch {
-            // If not JSON, use raw error text
-            if (errorText.includes('duplicate key') || 
-                errorText.includes('already exists')) {
-              throw new Error('Ovaj email je već registrovan. Molimo prijavite se ili koristite drugi email.');
-            }
-            throw new Error(errorText || 'Došlo je do greške prilikom registracije');
+      if (!response.ok) {
+        const errorText = await response.text();
+        try {
+          const errorData = JSON.parse(errorText);
+          if (errorData.message?.includes('duplicate key') || 
+              errorData.message?.includes('already exists')) {
+            throw new Error('Ovaj email je već registrovan. Molimo prijavite se ili koristite drugi email.');
           }
-        }
-
-        const savedUser = await response.json();
-        setKorisnik(savedUser);
-        navigate(isRadnikRegistration ? "/Radnik" : "/");
-      } else {
-        // Login process remains the same
-        const [klijentiResponse, radniciResponse] = await Promise.all([
-          fetch('http://localhost:8080/api/klijenti/'),
-          fetch('http://localhost:8080/api/radnici/')
-        ]);
-
-        const [klijenti, radnici] = await Promise.all([
-          klijentiResponse.json(),
-          radniciResponse.json()
-        ]);
-
-        const user = [...klijenti, ...radnici].find(
-          user => user.mejl === email && user.sifra === password
-        );
-
-        if (user) {
-          setKorisnik(user);
-          navigate(user.mejl.includes('@dubinskop') ? "/Radnik" : "/");
-        } else {
-          setError("Pogrešni kredencijali. Pokušajte ponovo.");
+          throw new Error(errorData.message || 'Došlo je do greške prilikom registracije');
+        } catch {
+          if (errorText.includes('duplicate key') || 
+              errorText.includes('already exists')) {
+            throw new Error('Ovaj email je već registrovan. Molimo prijavite se ili koristite drugi email.');
+          }
+          throw new Error(errorText || 'Došlo je do greške prilikom registracije');
         }
       }
-    } catch (error) {
-      console.error("Error:", error);
-      setError(error.message);
-    } finally {
-      setIsPending(false);
+
+      const savedUser = await response.json();
+      setKorisnik(savedUser);
+      navigate(isRadnikRegistration ? "/Radnik" : "/");
+    } else {
+      // If we're logging in, check if email contains "@dubinskop" (indicating radnik)
+      const isRadnikLogin = email.includes('@dubinskop');
+      
+      let response;
+      if (isRadnikLogin) {
+        // If it's a radnik, only fetch from /api/radnici
+        response = await fetch('http://localhost:8080/api/radnici/');
+      } else {
+        // If it's a klijent, only fetch from /api/klijenti
+        response = await fetch('http://localhost:8080/api/klijenti/');
+      }
+
+      if (!response.ok) {
+        setError("Došlo je do greške pri pristupu serveru.");
+        return;
+      }
+
+      const users = await response.json();
+
+      // Find the user from the fetched data
+      const user = users.find(
+        user => user.mejl === email && user.sifra === password
+      );
+
+      if (user) {
+        setKorisnik(user);
+        navigate(user.mejl.includes('@dubinskop') ? "/Radnik" : "/");
+      } else {
+        setError("Pogrešni kredencijali. Pokušajte ponovo.");
+      }
     }
-  };
+  } catch (error) {
+    console.error("Error:", error);
+    setError(error.message);
+  } finally {
+    setIsPending(false);
+  }
+};
 
   return (
     <main>
