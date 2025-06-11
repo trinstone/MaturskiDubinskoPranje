@@ -14,7 +14,6 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div className="links">
         {isRadnik() ? (
           <Link to="/Radnik">REZERVACIJE</Link>
         ) : (
@@ -35,7 +34,6 @@ const NavBar = () => {
             {korisnik ? "Izloguj se" : "Uloguj se"}
           </button>
         </div>
-      </div>
     </nav>
   );
 };

@@ -1,38 +1,39 @@
 import React, { useState } from 'react';
 import stolice1 from './galerija/stolice1.png';
 import stolice2 from './galerija/stolice2.png';
-import stolice3 from './galerija/stolice3.png'; // Add more images as necessary
+import stolice3 from './galerija/stolice3.png';
 import stolice4 from './galerija/stolice4.png';
 import './cssPojedinacni/Galerija.css';
 
-const images = [stolice1, stolice2, stolice3, stolice4]; // Array to hold image paths
+const slike = [stolice1, stolice2, stolice3, stolice4];
 
-const Galerija = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const PrikazGalerije = () => {
+  const [trenutniIndeks, postaviTrenutniIndeks] = useState(0);
 
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); // Loops back to first image
+  const sledecaSlika = () => {
+    postaviTrenutniIndeks((prethodni) => (prethodni + 1) % slike.length);
   };
 
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length); // Loops back to last image
+  const prethodnaSlika = () => {
+    postaviTrenutniIndeks((prethodni) => (prethodni - 1 + slike.length) % slike.length);
   };
 
   return (
     <main>
-      <div className="Galerija-container">
-        <h1 className="Galerija-title">Galerija</h1>
-        <div className="Galerija-image-container">
-          <img src={images[currentIndex]} alt="Gallery" className="Galerija-image" />
+      <div className="galerijaKontejner">
+        <h1 className="galerijaNaslov">Galerija</h1>
+        <div className="galerijaSlikaKontejner">
+          <img src={slike[trenutniIndeks]} alt="Galerija" className="galerijaSlika" />
         </div>
-        <div className="Galerija-button-container">
-          <button className="Galerija-prev-button" onClick={prevImage}>&lt;</button>
-          <button className="Galerija-next-button" onClick={nextImage}>&gt;</button>
+        <div className="galerijaDugmeKontejner">
+          <button className="galerijaDugmePrethodno" onClick={prethodnaSlika}>&lt;</button>
+          <button className="galerijaDugmeSledece" onClick={sledecaSlika}>&gt;</button>
         </div>
       </div>
     </main>
   );
 };
 
-export default Galerija;
+export default PrikazGalerije;
+
 

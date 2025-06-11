@@ -1,87 +1,86 @@
-.Galerija-container {
-    width: 60%;
-    margin: 50px auto;
-    text-align: center;
-    color: white;
+.galerijaKontejner {
+  width: 60%;
+  margin: 50px auto;
+  text-align: center;
+  color: white;
+}
+
+.galerijaSlikaKontejner {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.galerijaSlika {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.galerijaSlika:hover {
+  transform: scale(1.05);
+}
+
+.galerijaDugmeKontejner {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.galerijaDugmePrethodno,
+.galerijaDugmeSledece {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 2em;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+.galerijaDugmePrethodno:hover,
+.galerijaDugmeSledece:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .galerijaKontejner {
+    width: 80%;
   }
-  
-  .Galerija-image-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 20px;
+
+  .galerijaSlika {
+    max-width: 100%;
   }
-  
-  .Galerija-image {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease-in-out;
+
+  .galerijaDugmePrethodno,
+  .galerijaDugmeSledece {
+    font-size: 1.5em;
+    padding: 10px 16px;
   }
-  
-  .Galerija-image:hover {
-    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .galerijaKontejner {
+    width: 90%;
   }
-  
-  .Galerija-button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+
+  .galerijaDugmePrethodno,
+  .galerijaDugmeSledece {
+    font-size: 1.2em;
+    padding: 8px 14px;
   }
-  
-  .Galerija-prev-button,
-  .Galerija-next-button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 2em;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.3s, transform 0.3s;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: left;
-    align-items: left;
-  }
-  
-  .Galerija-prev-button:hover,
-  .Galerija-next-button:hover {
-    transform: scale(1.1);
-  }
-  
-  @media (max-width: 768px) {
-    .Galerija-container {
-      width: 80%;
-    }
-  
-    .Galerija-image {
-      max-width: 100%;
-    }
-  
-    .Galerija-prev-button,
-    .Galerija-next-button {
-      font-size: 1.5em;
-      padding: 10px 16px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .Galerija-container {
-      width: 90%;
-    }
-  
-    .Galerija-prev-button,
-    .Galerija-next-button {
-      font-size: 1.2em;
-      padding: 8px 14px;
-    }
-  }
-  
+}

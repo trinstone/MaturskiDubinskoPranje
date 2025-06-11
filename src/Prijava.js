@@ -16,7 +16,7 @@ const Prijava = () => {
   }, [location.pathname]);
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(""); // Keep the password, but don't use it for login validation
+  const [password, setPassword] = useState(""); 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -31,7 +31,6 @@ const Prijava = () => {
 
     try {
       if (isRegistering) {
-        // Registration code remains the same
         const isRadnikRegistration = email.includes('@dubinskop');
         
         const newUser = {
@@ -69,20 +68,16 @@ const Prijava = () => {
             throw new Error(errorText || 'Došlo je do greške prilikom registracije');
           }
         }
-
+        //u zavisnosti od toga da li je radnik fetcuje podatke sa razlicitih api
         const savedUser = await response.json();
         setKorisnik(savedUser);
         navigate(isRadnikRegistration ? "/Radnik" : "/");
       } else {
-        // If we're logging in, check if email contains "@dubinskop" (indicating radnik)
         const isRadnikLogin = email.includes('@dubinskop');
-        
         let response;
         if (isRadnikLogin) {
-          // If it's a radnik, only fetch from /api/radnici
           response = await fetch('http://localhost:8080/api/radnici');
         } else {
-          // If it's a klijent, only fetch from /api/klijenti
           response = await fetch('http://localhost:8080/api/klijenti/');
         }
 
@@ -93,11 +88,11 @@ const Prijava = () => {
 
         const users = await response.json();
 
-        // Find the user from the fetched data, just checking for the email
+        // trazi korisinika pomocu mejla
         const user = users.find(user => user.mejl === email);
 
         if (user) {
-          // If the user is found, set the user and navigate
+          // postavi korisnika kao trenutnog ako je nadjen
           setKorisnik(user);
           navigate(user.mejl.includes('@dubinskop') ? "/Radnik" : "/");
         } else {

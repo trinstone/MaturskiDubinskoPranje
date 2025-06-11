@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useKorisnik } from "./KorisnikKontekst"; // Adjust path if needed
+import { useKorisnik } from "./KorisnikKontekst";
 
 const PostojeceRezervacije = () => {
   const { korisnik } = useKorisnik();
@@ -16,7 +16,6 @@ const PostojeceRezervacije = () => {
           throw new Error("Failed to fetch reservations");
         }
         const data = await response.json();
-        console.log(data);  // Log the fetched data to inspect the structure
         setRezervacije(data);
       } catch (error) {
         console.error("Error fetching reservations:", error);
@@ -34,53 +33,51 @@ const PostojeceRezervacije = () => {
 
   return (
     <main>
-    <div>
-      <h1>Postojeće Rezervacije</h1>
-      {loading ? (
-        <p>Učitavanje rezervacija...</p>
-      ) : rezervacije.length > 0 ? (
-        rezervacije.map((rezervacija) => (
-          <table key={rezervacija.id}>
-            <thead>
-              <tr>
-                <th colSpan="2">
-                  Rezervacija #{rezervacija.id}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Datum</td>
-                <td>{rezervacija.datumVreme}</td>
-              </tr>
-              <tr>
-                <td className="reservation-cell reservation-cell-bold">Adresa</td>
-                <td className="reservation-cell">{rezervacija.adresa}</td>
-              </tr>
-              <tr>
-                <td>Usluge</td>
-                <td>
-                  {rezervacija.usluge && rezervacija.usluge.length > 0 ? (
-                    <ul>
-                      {rezervacija.usluge.map((usluga, index) => (
-                        <li key={index}>
-                          <strong>{usluga.naziv}</strong>: {usluga.detalji}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    "Nema usluga"
-                  )}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        ))
-      ) : (
-        <p id="BezRez">Nemate nijednu rezervaciju.</p>
-      )}
-    </div>
-  </main>
+      <div>
+        <h1>Postojeće Rezervacije</h1>
+        {loading ? (
+          <p>Učitavanje rezervacija...</p>
+        ) : rezervacije.length > 0 ? (
+          rezervacije.map((rezervacija) => (
+            <table key={rezervacija.id}>
+              <thead>
+                <tr>
+                  <th colSpan="2">Rezervacija #{rezervacija.id}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Datum</td>
+                  <td>{rezervacija.datumVreme.split('T')[0]} {rezervacija.datumVreme.split('T')[1]}</td>
+                </tr>
+                <tr>
+                  <td>Adresa</td>
+                  <td>{rezervacija.adresa}</td>
+                </tr>
+                <tr>
+                  <td>Usluge</td>
+                  <td>
+                    {rezervacija.usluge && rezervacija.usluge.length > 0 ? (
+                      <ul>
+                        {rezervacija.usluge.map((usluga, index) => (
+                          <li key={index}>
+                            <strong>{usluga.naziv}</strong>: {usluga.detalji}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      "Nema usluga"
+                    )}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          ))
+        ) : (
+          <p id="BezRez">Nemate nijednu rezervaciju.</p>
+        )}
+      </div>
+    </main>
   );
 };
 

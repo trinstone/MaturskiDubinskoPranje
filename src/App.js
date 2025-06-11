@@ -25,7 +25,6 @@ function App() {
         <div
           id="App"
           style={{
-            backgroundColor: 'black',
             backgroundImage: `url(${pozadina})`,
             backgroundSize: '100% auto',
             backgroundPosition: 'top center',
@@ -39,7 +38,6 @@ function App() {
               <img src={pozadinaMargina} alt="" id="pozadinaMargina1" />
               <img src={pozadinaMargina} alt="" id="pozadinaMargina2" />
               <img src={slicica1} alt="" className="slicica1" />
-            <main>
               <Routes>
                 <Route path="/" element={<Pocetna />} />
                 <Route path="/Usluge" element={<Usluge />} />
@@ -51,7 +49,6 @@ function App() {
                 <Route path="/PostojeceRezervacije/:id" element={<PostojeceRezervacije />} />
                 <Route path="/Radnik/" element={<Radnik />} />
               </Routes>
-            </main>
               <img src={slicica2} alt="" className="slicica2" />
               <img src={slicica4} alt="" className="slicica4" />
               <img src={slicica3} alt="" className="slicica3" />
