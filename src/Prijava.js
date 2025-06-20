@@ -42,7 +42,7 @@ const Prijava = () => {
         };
 
         const endpoint = isRadnikRegistration 
-          ? 'http://localhost:8080/api/radnici' 
+          ? 'http://localhost:8080/api/radnici/' 
           : 'http://localhost:8080/api/klijenti/';
 
         const response = await fetch(endpoint, {
