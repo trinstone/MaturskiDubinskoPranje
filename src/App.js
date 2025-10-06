@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
 import pozadina from './pozadina.png';
-import pozadinaMargina from './pozadinaMargine.jpg';
+import pozadinaMargina from './pozadinaMargine2.jpeg';
 import Pocetna from './Pocetna';
 import slicica1 from './stikeri/slicica1.png'; 
 import slicica2 from './stikeri/slicica2.png'; 
@@ -18,7 +18,7 @@ function App() {
         <div
           id="App"
           style={{
-            backgroundImage: `url(${pozadina})`,
+            backgroundColor: '#42A5F5',
             backgroundSize: '100% auto',
             backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
