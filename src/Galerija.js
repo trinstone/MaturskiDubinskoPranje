@@ -7,7 +7,7 @@ import './cssPojedinacni/Galerija.css';
 
 const slike = [stolice1, stolice2, stolice3, stolice4];
 
-const PrikazGalerije = () => {
+const Galerija = () => {
   const [trenutniIndeks, postaviTrenutniIndeks] = useState(0);
 
   const sledecaSlika = () => {
@@ -34,6 +34,6 @@ const PrikazGalerije = () => {
   );
 };
 
-export default PrikazGalerije;
+export default Galerija;
 
 
