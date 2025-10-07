@@ -5,7 +5,7 @@ nav {
     right: 5vw;      
     padding: 15px;
     align-items: center;
-    background-color: black;
+    background-color: #42A5F5;
     z-index: 1;
     max-width: calc(100% - 10vw); 
   }

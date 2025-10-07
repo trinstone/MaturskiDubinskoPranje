@@ -1,0 +1,59 @@
+#kontakt {
+  width: 100%;
+  background-color: #1663BC;
+  color: white;
+  border-top: 0.3vw solid white;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+#kontakt h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.kontakt-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left side (phone numbers) */
+.kontakt-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+/* Middle (icons) */
+.kontakt-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kontakt-icons img {
+  width: 5vw;
+  height: 5vw;
+}
+
+/* Right side (Instagram handle) */
+.kontakt-right {
+  text-align: right;
+}
+
+/* Responsive behavior for small screens */
+@media (max-width: 600px) {
+  .kontakt-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .kontakt-left,
+  .kontakt-right {
+    text-align: center;
+  }
+}
