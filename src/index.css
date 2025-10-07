@@ -47,6 +47,13 @@ h1 {
   z-index: -1; 
 }
 
+.slicice {
+  width: 100%;
+  overflow: hidden; /* ensures floats behave well */
+  position: relative;
+  margin-bottom: -2vw; /* optional tweak to bring footer closer */
+}
+
 .slicica1 {
   float: left;
   width: 17vw;

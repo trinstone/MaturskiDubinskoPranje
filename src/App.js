@@ -36,9 +36,11 @@ function App() {
                 <Route path="/Usluge" element={<Usluge />} />
                 <Route path="/Galerija" element={<Galerija />} />
               </Routes>
-              <img src={slicica2} alt="" className="slicica2" />
-              <img src={slicica4} alt="" className="slicica4" />
-              <img src={slicica3} alt="" className="slicica3" />
+              <div className="slicice">
+                <img src={slicica2} alt="" className="slicica2" />
+                <img src={slicica4} alt="" className="slicica4" />
+                <img src={slicica3} alt="" className="slicica3" />
+              </div>
             <Kontakt />
           </div>
         </div>

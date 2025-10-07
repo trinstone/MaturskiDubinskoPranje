@@ -16,7 +16,7 @@ const Kontakt = () => {
         </div>
 
         <div className="kontakt-icons">
-          <img src={viber} alt="Viber" />
+          <img src={viber} alt="Viber" className="viber-icon" />
           <img src={whatsapp} alt="WhatsApp" />
           <img src={instagram} alt="Instagram" />
         </div>

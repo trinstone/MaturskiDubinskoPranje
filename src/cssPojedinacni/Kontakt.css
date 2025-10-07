@@ -3,19 +3,22 @@
   background-color: #1663BC;
   color: white;
   border-top: 0.3vw solid white;
-  padding: 1rem;
+  padding: 1.5rem;
   box-sizing: border-box;
 }
 
 #kontakt h3 {
   text-align: center;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
+/* Container with content centered as a group */
 .kontakt-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* centers whole group */
+  gap: 4vw; /* distance between left, middle, and right sections */
 }
 
 /* Left side (phone numbers) */
@@ -26,17 +29,17 @@
   text-align: left;
 }
 
-/* Middle (icons) */
+/* Middle (icons stacked vertically) */
 .kontakt-icons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .kontakt-icons img {
-  width: 5vw;
-  height: 5vw;
+  width: 4vw;
+  height: 4vw;
 }
 
 /* Right side (Instagram handle) */
@@ -44,16 +47,26 @@
   text-align: right;
 }
 
-/* Responsive behavior for small screens */
+/* Round only the Viber icon */
+.viber-icon {
+  border-radius: 25%;
+  border: 2px solid white;
+}
+
+/* Responsive behavior */
 @media (max-width: 600px) {
   .kontakt-container {
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
   }
 
   .kontakt-left,
   .kontakt-right {
     text-align: center;
+  }
+
+  .kontakt-icons img {
+    width: 8vw;
+    height: 8vw;
   }
 }
