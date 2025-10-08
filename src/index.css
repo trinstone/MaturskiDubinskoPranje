@@ -29,6 +29,16 @@ h1 {
   text-transform: uppercase;
 }
 
+h2 {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+h3 {
+  text-align: center;
+}
+
 #pozadinaMargina1{
   position: fixed;
   bottom: 0;
@@ -78,12 +88,6 @@ h1 {
   vertical-align: bottom;
 }
 
-h2 {
-  text-align: center;
-  color: white;
-  margin-bottom: 10px;
-}
-
 label {
   font-weight: bold;
   color: white;
@@ -101,16 +105,47 @@ table {
 
 th,
 td {
-  background-color: #000;
+  background-color: #42A5F5;
   color: #fff;
   text-align: center;
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   border-radius: 5px;
   min-width: 100px;
   min-height: 80px;
   padding: 10px;
+  border: 0.2vw solid #fff;
+}
+
+td:hover, th:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 ul {
   list-style-type: none;
+}
+
+.sekcija {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.4rem 0.9rem;
+  margin: 0;
+  background-color: #42A5F5;
+  border: 0.3vw solid white;
+  border-radius: 1.5vw;
+  box-sizing: border-box;
+  width: auto;
+}
+
+/* make the ol fit nicely inside */
+.sekcija ol {
+  margin: 0;
+  padding-left: 1.2rem;        /* keep numbers readable */
+  list-style-position: inside;
+}
+.sekcija li {
+  margin: 0.12rem 0;
 }

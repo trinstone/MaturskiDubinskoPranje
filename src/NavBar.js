@@ -4,11 +4,12 @@ import './cssPojedinacni/NavBar.css';
 const NavBar = () => {
   return (
     <nav>
-       
+       <b>
           <Link to="/">POČETNA</Link>
           <Link to="/usluge">USLUGE</Link>
           <Link to="/galerija">GALERIJA</Link>
           <a href="#kontakt">KONTAKT</a>
+      </b>
     </nav>
   );
 };

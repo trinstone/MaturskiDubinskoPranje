@@ -10,14 +10,20 @@ const Pocetna = () => {
             <div id="Pocetna">
                 <h1>Dubinsko pranje i čišćenje raznih površina</h1>
                 <section>
-                    Dajte povrsinu, mi cemo je ocistiti. Preko tvrdih podnih površina
-                    i prozora, do automobila, namestaja, tepiha, jastuka, stolica.... 
-                    Profesionalno dubinsko pranje i na veliko(restorani, hoteli) i malo.
-                    <ol>
-                        <li>Dolazak na lice mesta</li>
-                        <li>Popusti na održavanje</li>
-                        <li>Radimo u najkraćem roku</li>
-                    </ol>
+                    Dajte površinu, mi cemo je očistiti. Preko tvrdih podnih površina
+                    i prozora, do automobila, nameštaja, tepiha, jastuka, stolica.... 
+                    Profesionalno dubinsko pranje i na veliko(restorani, hoteli) i malo
+                    <br></br>
+                    <br></br>
+                    <b>
+                        <div className='sekcija'>
+                            <ol>
+                                <li>Dolazak na lice mesta</li>
+                                <li>Popusti na redovno održavanje</li>
+                                <li>Radimo u najkraćem roku</li>
+                            </ol>
+                        </div>
+                    </b>
                 </section>
                 <section>
                     <h3>Naša oprema</h3>

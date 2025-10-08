@@ -39,8 +39,11 @@ const Usluge = () => {
                     </tr>
                 </tbody>
             </table>
-            <p>Isplata na licu mesta nakon obavljenog pranja.</p>
-            <p>*Upozorenje: Ukoliko imate kućne ljubimce povećana cena po dogovoru!</p>
+            <div className='sekcija'>
+                <p>Isplata na licu mesta nakon obavljenog pranja.</p>
+                <p>Za veće količine nameštaja i veće površine podova/stakala cena po dogovoru.</p>
+                <p>*Upozorenje: Ukoliko imate kućne ljubimce povećana cena!</p>
+            </div>
         </div>
         </main>
     );
