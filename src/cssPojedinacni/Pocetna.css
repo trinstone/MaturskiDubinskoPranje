@@ -1,6 +1,6 @@
   #Pocetna {
     text-align: center;
-    font-size: 25px;
+    font-size: 1.3vw;
     list-style-position: inside;
   }
 
@@ -9,6 +9,10 @@
     flex-direction: column;
     padding-left: 0; 
     list-style-position: inside; 
+  }
+
+  #Pocetna ol li{
+    text-align: left;
   }
 
   .liMasine {

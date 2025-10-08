@@ -19,13 +19,15 @@
   align-items: center;
   justify-content: center; /* centers whole group */
   gap: 4vw; /* distance between left, middle, and right sections */
+  font-size: 1.2vw;
+  font-weight: bold;
 }
 
 /* Left side (phone numbers) */
 .kontakt-left {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.01rem;
   text-align: left;
 }
 
@@ -69,4 +71,8 @@
     width: 8vw;
     height: 8vw;
   }
+}
+
+#kontakt p:hover {
+  border-bottom: 3px solid white;
 }
