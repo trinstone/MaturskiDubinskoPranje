@@ -22,9 +22,29 @@ const Galerija = () => {
     <main>
       <div className="galerijaKontejner">
         <h1 className="galerijaNaslov">Galerija</h1>
+
+        {/* Main image */}
         <div className="galerijaSlikaKontejner">
           <img src={slike[trenutniIndeks]} alt="Galerija" className="galerijaSlika" />
         </div>
+
+        {/* Thumbnail strip */}
+       <div className="galerijaThumbnailOuter">
+          <div className="galerijaThumbnailKontejner">
+            {slike.map((slika, indeks) => (
+              <img
+                key={indeks}
+                src={slika}
+                alt={`Thumbnail ${indeks + 1}`}
+                className={`galerijaThumbnail ${trenutniIndeks === indeks ? 'active' : ''}`}
+                onClick={() => postaviTrenutniIndeks(indeks)}
+              />
+            ))}
+          </div>
+       </div>
+
+
+        {/* Navigation buttons */}
         <div className="galerijaDugmeKontejner">
           <button className="galerijaDugmePrethodno" onClick={prethodnaSlika}>&lt;</button>
           <button className="galerijaDugmeSledece" onClick={sledecaSlika}>&gt;</button>
@@ -35,5 +55,6 @@ const Galerija = () => {
 };
 
 export default Galerija;
+
 
 

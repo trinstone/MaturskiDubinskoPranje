@@ -8,6 +8,8 @@ nav {
     background-color: #42A5F5;
     z-index: 1;
     max-width: calc(100% - 10vw); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #42A5F5, #5EB1F7);
   }
   
   nav a {

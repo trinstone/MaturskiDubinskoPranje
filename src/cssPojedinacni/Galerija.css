@@ -58,6 +58,7 @@
 .galerijaDugmeSledece:hover {
   background-color: rgba(255, 255, 255, 0.15);
   transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
 }
 
 @media (max-width: 768px) {
@@ -71,5 +72,43 @@
     font-size: 1.6em;
     padding: 6px 14px;
   }
+}
+
+.galerijaThumbnailKontejner {
+  display: flex;
+  justify-content: center;     /* center the strip */
+  gap: -20px;                  /* negative gap for overlap */
+  margin: 15px auto;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.galerijaThumbnail {
+  width: 5.17vw;
+  height: 4.17vw;             /* keeps original width:height ratio */
+  border: 0.2vw solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 0;
+  background: linear-gradient(135deg, #42A5F5, #64B0F6);
+}
+
+
+.galerijaThumbnail:hover,
+.galerijaThumbnail.active {
+  transform: scale(1.3);
+  border-color: white;
+  z-index: 10;                 /* bring to front on hover */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.galerijaThumbnailOuter {
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;  /* adjust as needed */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 

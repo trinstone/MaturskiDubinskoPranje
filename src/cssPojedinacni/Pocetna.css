@@ -21,7 +21,7 @@
     gap: 7vw;
     padding: 0;
     justify-content: center;
-    background-color: #1663BC;
+    background-color: #42A5F5;
   }
   
   .liMasine li {
@@ -40,4 +40,5 @@
     color: #3e7edf;
     border: solid white;
     border-radius: 6px;
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   }

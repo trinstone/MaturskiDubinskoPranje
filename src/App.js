@@ -30,7 +30,7 @@ function App() {
               <NavBar />
               <img src={pozadinaMargina} alt="" id="pozadinaMargina1" />
               <img src={pozadinaMargina} alt="" id="pozadinaMargina2" />
-              <img src={slicica1} alt="" className="slicica1" />
+              
               <Routes>
                 <Route path="/" element={<Pocetna />} />
                 <Route path="/Usluge" element={<Usluge />} />
