@@ -63,9 +63,8 @@ h1, h2, h3 {
   margin-bottom: -2vw; /* optional tweak to bring footer closer */
 }
 
-.slicica1 {
-  float: left;
-  width: 17vw;
+.logo {
+  width: 10vw;
   padding-top: 3%;
 }
 

@@ -8,6 +8,8 @@ import slicica1 from './stikeri/slicica1.png';
 import slicica2 from './stikeri/slicica2.png'; 
 import slicica3 from './stikeri/slicica3.png';
 import slicica4 from './stikeri/slicica4.png';
+import logo1 from './stikeri/cegiClean.png';
+import logo2 from './stikeri/cegiClean.png';
 import Kontakt from './Kontakt';
 import Usluge from './Usluge';
 import Galerija from './Galerija';
@@ -30,7 +32,8 @@ function App() {
               <NavBar />
               <img src={pozadinaMargina} alt="" id="pozadinaMargina1" />
               <img src={pozadinaMargina} alt="" id="pozadinaMargina2" />
-              
+              <img src={logo1} alt="" className="logo" style={{float: 'left'}} />
+              <img src={logo2} alt="" className="logo" style={{float: 'right'}}/>
               <Routes>
                 <Route path="/" element={<Pocetna />} />
                 <Route path="/Usluge" element={<Usluge />} />
