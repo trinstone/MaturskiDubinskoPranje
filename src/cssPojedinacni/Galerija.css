@@ -1,28 +1,28 @@
 .galerijaKontejner {
   width: 100%;
-  margin: 50px auto;
+  margin: 2.604vw auto; /* 50px -> 2.604vw */
   text-align: center;
   color: white;
 }
 
 .galerijaNaslov {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* keep rem for text spacing */
 }
 
 .galerijaSlikaKontejner {
   position: relative;
   display: block;
   width: 100%;
-  max-width: 800px; /* bigger picture */
-  margin: 0 auto 10px auto; /* centers under title */
+  max-width: 41.667vw; /* 800px -> 41.667vw */
+  margin: 0 auto 0.52vw auto; /* 10px -> 0.52vw */
 }
 
 .galerijaSlika {
   width: 100%;
   height: auto;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 0.78vw; /* 15px -> 0.78vw */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* keep px */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -36,10 +36,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 800px; /* same as image */
+  max-width: 41.667vw; /* same as image */
   margin: 0 auto;
   position: relative;
-  top: -10px;
+  top: -0.52vw; /* -10px -> -0.52vw */
 }
 
 .galerijaDugmePrethodno,
@@ -47,10 +47,10 @@
   background-color: transparent;
   border: 0.25vw solid white;
   color: white;
-  font-size: 2.2em;
-  padding: 8px 18px;
+  font-size: 2.2em; /* keep em (relative to font-size) */
+  padding: 0.42vw 0.94vw; /* 8px 18px -> 0.42vw 0.94vw */
   cursor: pointer;
-  border-radius: 10px; /* 🟢 removed circle, slightly rounded edges */
+  border-radius: 0.52vw; /* 10px -> 0.52vw */
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -70,16 +70,16 @@
   .galerijaDugmePrethodno,
   .galerijaDugmeSledece {
     font-size: 1.6em;
-    padding: 6px 14px;
+    padding: 0.31vw 0.73vw; /* 6px 14px -> ~0.31vw 0.73vw */
   }
 }
 
 .galerijaThumbnailKontejner {
   display: flex;
   justify-content: center;     /* center the strip */
-  gap: -20px;                  /* negative gap for overlap */
-  margin: 15px auto;
-  max-width: 800px;
+  gap: -1.04vw;                /* -20px -> -1.04vw */
+  margin: 0.78vw auto;         /* 15px -> 0.78vw */
+  max-width: 41.667vw;
   position: relative;
   z-index: 1;
 }
@@ -94,21 +94,27 @@
   background: linear-gradient(135deg, #42A5F5, #64B0F6);
 }
 
-
 .galerijaThumbnail:hover,
 .galerijaThumbnail.active {
   transform: scale(1.3);
   border-color: white;
   z-index: 10;                 /* bring to front on hover */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35); /* keep px */
 }
 
 .galerijaThumbnailOuter {
   overflow: hidden;
   width: 100%;
-  max-width: 500px;  /* adjust as needed */
+  max-width: 26.042vw;  /* 500px -> 26.042vw */
   margin: 0 auto;
   display: flex;
   justify-content: center;
 }
+
+/* Mobile tweaks: expand thumbnails touch size */
+@media (max-width: 600px) {
+  .galerijaThumbnail { width: 10.417vw; height: 8.333vw; } /* larger touch targets */
+  .galerijaDugmePrethodno, .galerijaDugmeSledece { font-size: 2.2em; padding: 0.6vw 1vw; }
+}
+
 

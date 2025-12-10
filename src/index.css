@@ -11,87 +11,73 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding-bottom: 10vw;
 }
-main{
-  padding-top: 1%;
+
+main {
+  padding-top: 1vw; /* 1% -> 1vw */
   min-height: 80vh;
 }
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+/* smoother scrolling */
 html {
   scroll-behavior: smooth;
 }
 
+/* headings */
 h1 {
   text-transform: uppercase;
 }
-
 h2 {
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
-
 h1, h2, h3 {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   text-align: center;
 }
 
-#pozadinaMargina1{
+/* side background images */
+#pozadinaMargina1 {
   position: fixed;
   bottom: 0;
-  left: 0; 
+  left: 0;
   width: 5vw;
-  height: 100%; 
-  z-index: -1; 
+  height: 100%;
+  z-index: -1;
 }
 
-#pozadinaMargina2{
+#pozadinaMargina2 {
   position: fixed;
-  bottom: 0; 
+  bottom: 0;
   right: 0;
   width: 5vw;
-  height: 100%; 
-  z-index: -1; 
+  height: 100%;
+  z-index: -1;
 }
 
+/* thumbnails stripe */
 .slicice {
   width: 100%;
   overflow: hidden; /* ensures floats behave well */
   position: relative;
-  margin-bottom: -2vw; /* optional tweak to bring footer closer */
+  margin-bottom: -2vw;
 }
 
+/* logo */
 .logo {
   width: 10vw;
   padding-top: 3%;
 }
 
-.slicica2 {
-  float: left;
-  width: 15vw;
-  vertical-align: bottom;
-}
+/* small sticker images */
+.slicica2 { float: left; width: 15vw; vertical-align: bottom; }
+.slicica3 { float: right; width: 10vw; vertical-align: bottom; }
+.slicica4 { float: right; width: 15vw; vertical-align: bottom; }
 
-.slicica3 {
-  float: right;
-  width: 10vw;
-  vertical-align: bottom;
-}
-
-.slicica4 {
-  float: right;
-  width: 15vw;
-  vertical-align: bottom;
-}
-
-label {
-  font-weight: bold;
-  color: white;
-  text-align: left;
-}
-
+/* table styling (converted sizes and font to rem) */
 table {
   align-self: center;
   border-collapse: separate;
@@ -101,12 +87,11 @@ table {
   padding-right: 20px;
 }
 
-th,
-td {
+th, td {
   background-color: #42A5F5;
   color: #fff;
   text-align: center;
-  font-size: 1.5vw;
+  font-size: 1.8rem; /* 1.5vw -> ~1.8rem */
   border-radius: 0.26vw;
   min-width: 5.2vw;
   min-height: 4.2vw;
@@ -122,32 +107,24 @@ td:hover, th:hover {
   cursor: pointer;
 }
 
-ul {
-  list-style-type: none;
-}
+ul { list-style-type: none; }
 
+/* .sekcija kept as inline-block and vw */
 .sekcija {
-  display: inline-block;        /* shrink to fit content */
+  display: inline-block;
   background-color: #42A5F5;
   border: 0.3vw solid white;
   border-radius: 1.5vw;
   padding: 0.6rem 1rem;
-  text-align: center;           /* center text inside the list */
-  margin: 0 auto 2vw auto;      /* center horizontally and add space below */
-  list-style-position: inside;  /* keeps numbers close and aligned */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* make the ol fit nicely inside */
-.sekcija ol {
-  margin: 0;
-  padding-left: 1.2rem;        /* keep numbers readable */
+  text-align: center;
+  margin: 0 auto 2vw auto;
   list-style-position: inside;
 }
-.sekcija li {
-  margin: 0.12rem 0;
-}
 
+.sekcija ol { margin: 0; padding-left: 1.2rem; list-style-position: inside; }
+.sekcija li { margin: 0.12rem 0; }
+
+/* hover-scale class */
 .hover-scale:hover {
   transform: scale(1.05);
   transition: all 0.2s ease-in-out;
@@ -155,6 +132,17 @@ ul {
   cursor: pointer;
 }
 
-.hover-scale {
-  transition: all 0.2s ease-in-out;
+.hover-scale { transition: all 0.2s ease-in-out; }
+
+/* On mobile: remove side margins and hide side backgrounds (option A) */
+@media (max-width: 600px) {
+  body {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #pozadinaMargina1,
+  #pozadinaMargina2 {
+    display: none;
+  }
+  nav { left: 0; right: 0; max-width: 100%; }
 }

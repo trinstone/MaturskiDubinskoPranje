@@ -3,7 +3,7 @@
   background-color: #1663BC;
   color: white;
   border-top: 0.3vw solid white;
-  padding: 1.5rem;
+  padding: 1.5rem; /* keep rem for comfortable spacing */
   box-sizing: border-box;
 }
 
@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center; /* centers whole group */
   gap: 4vw; /* distance between left, middle, and right sections */
-  font-size: 1.2vw;
+  font-size: 1.44rem; /* converted from 1.2vw -> 1.44rem for stable text */
   font-weight: bold;
 }
 
@@ -52,7 +52,7 @@
 /* Round only the Viber icon */
 .viber-icon {
   border-radius: 25%;
-  border: 2px solid white;
+  border: 0.104vw solid white; /* 2px -> 0.104vw */
 }
 
 /* Responsive behavior */
@@ -74,5 +74,5 @@
 }
 
 #kontakt p:hover {
-  border-bottom: 3px solid white;
+  border-bottom: 0.156vw solid white; /* 3px -> 0.156vw */
 }
