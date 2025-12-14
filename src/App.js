@@ -1,10 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 import './App.css';
 import NavBar from './NavBar';
-import pozadina from './pozadina.png';
 import pozadinaMargina from './margineSvetla.jpeg';
-import Pocetna from './Pocetna';
-import slicica1 from './stikeri/slicica1.png'; 
+import Pocetna from './Pocetna'; 
 import slicica2 from './stikeri/slicica2.png'; 
 import slicica3 from './stikeri/slicica3.png';
 import slicica4 from './stikeri/slicica4.png';
