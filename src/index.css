@@ -140,6 +140,9 @@ ul { list-style-type: none; }
     margin-left: 0;
     margin-right: 0;
   }
+  main {
+    padding-top: 15vw;
+  }
   #pozadinaMargina1,
   #pozadinaMargina2 {
     display: none;
