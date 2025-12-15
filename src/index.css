@@ -145,4 +145,33 @@ ul { list-style-type: none; }
     display: none;
   }
   nav { left: 0; right: 0; max-width: 100%; }
+  .logo {
+    width: 28vw;        /* visually correct on phone */
+    padding-top: 4vw;
+  }
+  h1 {
+    font-size: 6vw;   /* ~22–24px */
+  }
+
+  h2 {
+    font-size: 5vw;
+  }
+
+  h3 {
+    font-size: 4.5vw;
+  }
+   table {
+    border-spacing: 2vw;
+  }
+
+  th, td {
+    font-size: 4vw;        /* readable but compact */
+    min-width: 18vw;
+    min-height: 12vw;
+    padding: 1.5vw;
+  }
+  nav a {
+    padding: 2vw 1.5vw;
+    display: inline-block;
+  }
 }

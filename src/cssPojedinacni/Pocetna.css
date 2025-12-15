@@ -44,3 +44,20 @@
   border-radius: 0.31vw; /* 6px -> 0.31vw */
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 600px) {
+  .liMasine {
+    flex-direction: column;
+    gap: 6vw;
+    padding: 4vw 0;
+  }
+
+  .liMasine li {
+    font-size: 4.5vw;
+  }
+
+  .liMasine li img {
+    width: 45vw;
+    height: auto;
+  }
+}
