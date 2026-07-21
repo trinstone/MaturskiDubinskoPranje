@@ -1,7 +1,30 @@
+import pozadina from './pozadina.png';
 import masine1 from './masine/kercherDP2.png';
 import masine2 from './masine/opremaStaklo2.png';
 import masine3 from './masine/masinaPod.png';
 import './cssPojedinacni/Pocetna.css';
+
+const Kvacica = () => (
+    <svg viewBox="0 0 24 24" className="kvacica-ikona" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill="#1663BC" />
+        <path d="M7 12.5l3 3 7-7" stroke="#ffffff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+);
+
+const prednosti = [
+    'Dolazak na lice mesta, po dogovorenom terminu',
+    'Popusti na redovno i periodično održavanje',
+    'Radimo u najkraćem mogućem roku',
+    'Profesionalna oprema i sredstva bezbedna za decu i kućne ljubimce',
+    'Rad na malo (domaćinstva) i na veliko (restorani, hoteli, kancelarije)',
+];
+
+const zastoMi = [
+    { broj: '5+', opis: 'godina iskustva u dubinskom pranju' },
+    { broj: '100%', opis: 'zadovoljnih klijenata i preporuka' },
+    { broj: '0', opis: 'skrivenih troškova, cena se zna unapred' },
+    { broj: '24h', opis: 'odgovor na upit i zakazivanje termina' },
+];
 
 const Pocetna = () => {
 
@@ -9,20 +32,40 @@ const Pocetna = () => {
         <main>
             <div id="Pocetna">
                 <section className="hero">
-                    <h1>Dubinsko pranje i čišćenje raznih površina</h1>
-                    <p className="hero-tekst">
-                        Dajte površinu, mi ćemo je očistiti. Preko tvrdih podnih površina
-                        i prozora, do automobila (potpuno pranje, iznutra i spolja), nameštaja, tepiha, jastuka, stolica...
-                        Profesionalno dubinsko pranje i na veliko (restorani, hoteli) i malo.
-                    </p>
-                    <a href="#kontakt" className="dugme-cta">Zakažite termin</a>
+                    <div className="hero-grid">
+                        <div className="hero-tekstualni-deo">
+                            <h1>Dubinsko pranje i čišćenje raznih površina</h1>
+                            <p className="hero-tekst">
+                                Dajte površinu, mi ćemo je očistiti. Preko tvrdih podnih površina
+                                i prozora, do automobila (potpuno pranje, iznutra i spolja), nameštaja, tepiha, jastuka, stolica...
+                                Profesionalno dubinsko pranje i na veliko (restorani, hoteli) i malo.
+                            </p>
+                            <a href="#kontakt" className="dugme-cta">Zakažite termin</a>
+                        </div>
+                        <div className="hero-slika-deo">
+                            <img src={pozadina} alt="Dubinsko pranje nameštaja" className="hero-slika" />
+                        </div>
+                    </div>
 
-                    <div className='sekcija'>
-                        <ol>
-                            <li>Dolazak na lice mesta</li>
-                            <li>Popusti na redovno održavanje</li>
-                            <li>Radimo u najkraćem roku</li>
-                        </ol>
+                    <div className="prednosti-grid">
+                        {prednosti.map((stavka) => (
+                            <div className="prednost-kartica" key={stavka}>
+                                <Kvacica />
+                                <p>{stavka}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <section className="zasto-mi">
+                    <h3>Zašto baš mi?</h3>
+                    <div className="zasto-mi-grid">
+                        {zastoMi.map((stavka) => (
+                            <div className="zasto-mi-kartica" key={stavka.opis}>
+                                <span className="zasto-mi-broj">{stavka.broj}</span>
+                                <p>{stavka.opis}</p>
+                            </div>
+                        ))}
                     </div>
                 </section>
 
