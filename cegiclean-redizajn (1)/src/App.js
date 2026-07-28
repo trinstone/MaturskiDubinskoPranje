@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import AnalyticsTracker from './AnalyticsTracker';
 import NavBar from './NavBar';
 import Pocetna from './Pocetna';
 import Kontakt from './Kontakt';
@@ -10,6 +11,7 @@ function App() {
   return (
       <Router>
         <div id="App">
+          <AnalyticsTracker />
           <NavBar />
           <Routes>
             <Route path="/" element={<Pocetna />} />

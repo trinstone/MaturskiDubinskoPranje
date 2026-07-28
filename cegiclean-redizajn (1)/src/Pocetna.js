@@ -22,8 +22,8 @@ const prednosti = [
 const zastoMi = [
     { broj: '5+', opis: 'godina iskustva u dubinskom pranju' },
     { broj: '100%', opis: 'zadovoljnih klijenata i preporuka' },
-    { broj: '0', opis: 'skrivenih troškova, cena se zna unapred' },
-    { broj: '24h', opis: 'odgovor na upit i zakazivanje termina' },
+    { broj: '99%', opis: 'uklanjanje grinja, bakterija i neprijatnih mirisa' },
+    { broj: '24/7', opis: 'fleksibilni termini, rad vikendom ili noću' },
 ];
 
 const Pocetna = () => {

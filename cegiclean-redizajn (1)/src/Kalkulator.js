@@ -58,32 +58,37 @@ const Kalkulator = () => {
             <div className="kalkulator-grid">
                 <label className="kalkulator-red">
                     <span>Stolice (kom)</span>
-                    <input type="number" min="0" value={stolica}
-                        onChange={(e) => setStolica(Math.max(0, Number(e.target.value)))} />
+                    <input type="number" min="0" inputMode="numeric" value={stolica === 0 ? '' : stolica}
+                        placeholder="0"
+                        onChange={(e) => setStolica(e.target.value === '' ? 0 : Math.max(0, Number(e.target.value)))} />
                 </label>
 
                 <label className="kalkulator-red">
                     <span>Trosedi / fotelje (kom)</span>
-                    <input type="number" min="0" value={trosed}
-                        onChange={(e) => setTrosed(Math.max(0, Number(e.target.value)))} />
+                    <input type="number" min="0" inputMode="numeric" value={trosed === 0 ? '' : trosed}
+                        placeholder="0"
+                        onChange={(e) => setTrosed(e.target.value === '' ? 0 : Math.max(0, Number(e.target.value)))} />
                 </label>
 
                 <label className="kalkulator-red">
                     <span>Tepih (m²)</span>
-                    <input type="number" min="0" value={tepih}
-                        onChange={(e) => setTepih(Math.max(0, Number(e.target.value)))} />
+                    <input type="number" min="0" inputMode="numeric" value={tepih === 0 ? '' : tepih}
+                        placeholder="0"
+                        onChange={(e) => setTepih(e.target.value === '' ? 0 : Math.max(0, Number(e.target.value)))} />
                 </label>
 
                 <label className="kalkulator-red">
                     <span>Podovi — tvrde površine (m²)</span>
-                    <input type="number" min="0" value={podovi}
-                        onChange={(e) => setPodovi(Math.max(0, Number(e.target.value)))} />
+                    <input type="number" min="0" inputMode="numeric" value={podovi === 0 ? '' : podovi}
+                        placeholder="0"
+                        onChange={(e) => setPodovi(e.target.value === '' ? 0 : Math.max(0, Number(e.target.value)))} />
                 </label>
 
                 <label className="kalkulator-red">
                     <span>Staklene površine (m²)</span>
-                    <input type="number" min="0" value={staklo}
-                        onChange={(e) => setStaklo(Math.max(0, Number(e.target.value)))} />
+                    <input type="number" min="0" inputMode="numeric" value={staklo === 0 ? '' : staklo}
+                        placeholder="0"
+                        onChange={(e) => setStaklo(e.target.value === '' ? 0 : Math.max(0, Number(e.target.value)))} />
                 </label>
 
                 <label className="kalkulator-red kalkulator-checkbox">
