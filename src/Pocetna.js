@@ -79,7 +79,7 @@ const Pocetna = () => {
                         </div>
                         <div className="oprema-kartica">
                             <img src={masine2} alt="mašina za pranje staklenih površina" className='hover-scale'/>
-                            <p>Mašina za pranje staklenih površina</p>
+                            <p>Pranje staklenih površina</p>
                         </div>
                         <div className="oprema-kartica">
                             <img src={masine3} alt="mašina za pranje poda" className='hover-scale'/>

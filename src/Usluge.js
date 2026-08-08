@@ -7,43 +7,101 @@ const Usluge = () => {
         <div className="Usluge">
             <h1>Cenovnik usluga</h1>
             <table>
+                <caption>NAMEŠTAJ</caption>
                 <thead>
                     <tr>
                         <th>NAZIV</th>
-                        <th>CENA</th>
+                        <th>POČETNA CENA</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>stolica</td>
-                        <td>130 din komad</td>
+                        <td>STOLICE</td>
+                        <td>od 200 din</td>
                     </tr>
                     <tr>
-                        <td>trosed</td>
-                        <td>1000 din komad</td>
+                        <td>FOTELJA</td>
+                        <td>od 800 din</td>
                     </tr>
                     <tr>
-                        <td>tepih</td>
-                        <td>250 din po m²</td>
+                        <td>TROSED</td>
+                        <td>od 2 000 din</td>
                     </tr>
                     <tr>
-                        <td>auto</td>
-                        <td>5000 din</td>
+                        <td>DVOSED</td>
+                        <td>od 1 500 din</td>
                     </tr>
                     <tr>
-                        <td>tvrde površine-podovi</td>
-                        <td>180 din po m²</td>
+                        <td>UGAONA GARNITURA</td>
+                        <td>od 3 000 din</td>
                     </tr>
                     <tr>
-                        <td>staklene površine</td>
-                        <td>200 din po m²</td>
+                        <td>DUŠEK</td>
+                        <td>od 1 500 din</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <caption>POVRŠINE</caption>
+                <thead>
+                    <tr>
+                        <th>NAZIV</th>
+                        <th>POČETNA CENA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TEPIH / ITISON</td>
+                        <td>od 250 din po m²</td>
+                    </tr>
+                    <tr>
+                        <td>STAKLENE POVRŠINE</td>
+                        <td>od 120 din po m²</td>
+                    </tr>
+                    <tr>
+                        <td>TVRDE POVRŠINE - PODOVI</td>
+                        <td>od 150 din po m²</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                    <table>
+                <caption>AUTOMOBILI</caption>
+                <thead>
+                    <tr>
+                        <th>NAZIV</th>
+                        <th>POČETNA CENA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>KOMPLETAN <br></br> ENTERIJER</td>
+                        <td>od 6 000 din</td>
+                    </tr>
+                    <tr>
+                        <td>AUTO KOMPLET <br></br> (ENTERIJER + SPOLJAŠNJE PRANJE)</td>
+                        <td>od 7 000 din</td>
+                    </tr>
+                    <tr>
+                        <td>AUTO KOMPLET <br></br> KOŽNI ENTERIJER</td>
+                        <td>od 8 000 din</td>
+                    </tr>
+                    <tr>
+                        <td>KABINE KAMIONA</td>
+                        <td>od 10 000 din</td>
+                    </tr>
+                    <tr>
+                        <td>AUTOBUSI <br></br> (PO SEDIŠTU)</td>
+                        <td>od 300 din</td>
                     </tr>
                 </tbody>
             </table>
             <div className='sekcija'>
-                <p>Isplata na licu mesta nakon obavljenog pranja.</p>
-                <p>Za veće količine nameštaja i veće površine podova/stakala cena po dogovoru.</p>
-                <p>*Upozorenje: Ukoliko imate kućne ljubimce povećana cena!</p>
+                <p>Isplata moguća na licu mesta ili putem računa.</p>
+                <p>Za veće količine cena po dogovoru.</p>
+                <p>Prikazana cena je okvirna procena na osnovu cenovnika i ne predstavlja konačnu ponudu.
+                    Za veće količine i posebne slučajeve cena je po dogovoru.</p>
             </div>
 
             <Kalkulator />

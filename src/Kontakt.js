@@ -10,9 +10,8 @@ const Kontakt = () => {
 
       <div className="kontakt-container">
         <div className="kontakt-left">
-          <p>065 85 67 280</p>
-          <p>065 85 67 281</p>
-          <p>065 85 67 282</p>
+          <p>+381 62 871 5791</p>
+          <p>+381 62 840 2815</p>
         </div>
 
         <div className="kontakt-icons">
