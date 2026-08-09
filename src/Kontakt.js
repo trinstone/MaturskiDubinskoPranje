@@ -10,8 +10,8 @@ const Kontakt = () => {
 
       <div className="kontakt-container">
         <div className="kontakt-left">
-          <p>+381 62 871 5791</p>
-          <p>+381 62 840 2815</p>
+        <p><a href="tel:+381628715791">+381 62 871 5791</a></p>
+        <p><a href="tel:+381628402815">+381 62 840 2815</a></p>
         </div>
 
         <div className="kontakt-icons">

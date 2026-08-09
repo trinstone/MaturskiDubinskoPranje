@@ -1,5 +1,5 @@
 import './cssPojedinacni/Usluge.css';
-import Kalkulator from './Kalkulator';
+/* import Kalkulator from './Kalkulator'; */
 
 const Usluge = () => {
     return (
@@ -103,8 +103,7 @@ const Usluge = () => {
                 <p>Prikazana cena je okvirna procena na osnovu cenovnika i ne predstavlja konačnu ponudu.
                     Za veće količine i posebne slučajeve cena je po dogovoru.</p>
             </div>
-
-            <Kalkulator />
+            {/* <Kalkulator /> */}
         </div>
         </main>
     );

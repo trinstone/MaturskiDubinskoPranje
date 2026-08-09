@@ -80,6 +80,16 @@ table {
   box-shadow: var(--senka);
 }
 
+caption {
+  background-color: var(--plava-tamna);
+  color: var(--bela);
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  padding: 0.9rem 1rem;
+  font-weight: bold;
+}
+
 thead th {
   background-color: var(--plava-tamna);
   color: var(--bela);
