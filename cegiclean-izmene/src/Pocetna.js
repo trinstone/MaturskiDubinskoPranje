@@ -26,6 +26,24 @@ const zastoMi = [
     { broj: '24/7', opis: 'fleksibilni termini, rad vikendom ili noću' },
 ];
 
+const akcije = [
+    {
+        naslov: 'Dečija auto-sedišta',
+        opis: 'Bezbednost i higijena idu zajedno — pranje dečijeg auto-sedišta je uvek besplatno uz svaku porudžbinu.',
+        stalna: true,
+    },
+    {
+        naslov: 'Pomagala za osobe sa invaliditetom',
+        opis: 'Invalidska kolica i ortopedska pomagala čistimo uz poseban popust, jer znamo koliko su važna u svakodnevnom životu.',
+        stalna: true,
+    },
+    {
+        naslov: 'Letnja akcija',
+        opis: '15% popusta na dubinsko pranje tepiha i tvrdih podnih površina, do kraja avgusta.',
+        stalna: false,
+    },
+];
+
 const Pocetna = () => {
 
     return(
@@ -57,6 +75,21 @@ const Pocetna = () => {
                     </div>
                 </section>
 
+                <section className="akcije-sekcija">
+                    <h3>Akcije i pogodnosti</h3>
+                    <div className="akcije-grid">
+                        {akcije.map((stavka) => (
+                            <div className="akcija-kartica" key={stavka.naslov}>
+                                <span className={`akcija-oznaka ${stavka.stalna ? 'akcija-oznaka-stalna' : 'akcija-oznaka-sezonska'}`}>
+                                    {stavka.stalna ? 'Stalna pogodnost' : 'Sezonska akcija'}
+                                </span>
+                                <h4>{stavka.naslov}</h4>
+                                <p>{stavka.opis}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 <section className="zasto-mi">
                     <h3>Zašto baš mi?</h3>
                     <div className="zasto-mi-grid">
@@ -79,7 +112,7 @@ const Pocetna = () => {
                         </div>
                         <div className="oprema-kartica">
                             <img src={masine2} alt="mašina za pranje staklenih površina" className='hover-scale'/>
-                            <p>Mašina za pranje staklenih površina</p>
+                            <p>Pranje staklenih površina</p>
                         </div>
                         <div className="oprema-kartica">
                             <img src={masine3} alt="mašina za pranje poda" className='hover-scale'/>

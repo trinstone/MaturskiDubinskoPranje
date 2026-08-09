@@ -94,6 +94,64 @@
   line-height: 1.45;
 }
 
+/* akcije */
+.akcije-sekcija {
+  padding: clamp(1.5rem, 1rem + 2vw, 3rem) 0 0;
+}
+
+.akcije-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  margin-top: clamp(1.2rem, 1rem + 1vw, 2rem);
+  text-align: left;
+}
+
+.akcija-kartica {
+  background-color: #ffffff;
+  border: 1px solid #E3EAF3;
+  border-radius: 16px;
+  padding: 1.2rem 1.3rem;
+  box-shadow: 0 6px 20px rgba(22, 99, 188, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.akcija-kartica h4 {
+  margin: 0;
+  color: #1663BC;
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+}
+
+.akcija-kartica p {
+  margin: 0;
+  color: #5B6774;
+  font-size: clamp(0.9rem, 0.86rem + 0.2vw, 0.98rem);
+  line-height: 1.5;
+}
+
+.akcija-oznaka {
+  display: inline-block;
+  width: fit-content;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+}
+
+.akcija-oznaka-stalna {
+  background-color: #E7F1FC;
+  color: #1663BC;
+}
+
+.akcija-oznaka-sezonska {
+  background-color: #FFF1D6;
+  color: #B3760C;
+}
+
 /* zasto mi */
 .zasto-mi {
   padding: clamp(1.5rem, 1rem + 2vw, 3rem) 0;
