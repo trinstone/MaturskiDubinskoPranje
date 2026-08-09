@@ -1,39 +1,37 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useKorisnik } from "./KorisnikKontekst"; 
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from './stikeri/cegiClean.png';
 import './cssPojedinacni/NavBar.css';
 
 const NavBar = () => {
-  const navigate = useNavigate();
-  const { korisnik, setKorisnik, isRadnik } = useKorisnik(); 
+  const [otvoren, postaviOtvoren] = useState(false);
 
-  const handleLogout = () => {
-    setKorisnik(null); 
-    localStorage.removeItem("userId"); 
-    navigate("/"); 
-  };
+  const zatvoriMeni = () => postaviOtvoren(false);
 
   return (
     <nav>
-        {isRadnik() ? (
-          <Link to="/Radnik">REZERVACIJE</Link>
-        ) : (
-          <>
-          <Link to="/">POČETNA</Link>
-            <Link to="/usluge">USLUGE</Link>
-            <Link to="/UvodRezervacije">REZERVACIJE</Link>
-            <Link to="/galerija">GALERIJA</Link>
-            <a href="#kontakt">KONTAKT</a>
-          </>
-        )}
+      <div className="nav-sadrzaj">
+        <Link to="/" className="nav-logo-link" onClick={zatvoriMeni}>
+          <img src={logo} alt="Cegi Clean" className="logo" />
+        </Link>
 
-        <div className="prijava">
-          {!korisnik && !isRadnik() && (
-            <Link to="/Prijava/register">Registruj se</Link>
-          )}
-          <button onClick={korisnik ? handleLogout : () => navigate("/Prijava")}>
-            {korisnik ? "Izloguj se" : "Uloguj se"}
-          </button>
+        <button
+          className={`nav-hamburger ${otvoren ? 'otvoren' : ''}`}
+          aria-label="Meni"
+          onClick={() => postaviOtvoren((v) => !v)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div className={`nav-linkovi ${otvoren ? 'prikazano' : ''}`}>
+          <Link to="/" onClick={zatvoriMeni}>Početna</Link>
+          <Link to="/usluge" onClick={zatvoriMeni}>Usluge</Link>
+          <Link to="/galerija" onClick={zatvoriMeni}>Galerija</Link>
+          <a href="#kontakt" onClick={zatvoriMeni}>Kontakt</a>
         </div>
+      </div>
     </nav>
   );
 };

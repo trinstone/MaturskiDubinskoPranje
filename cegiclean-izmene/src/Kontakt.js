@@ -34,7 +34,6 @@ const InstagramIkonica = () => (
 );
 
 // Vodeći broj za Viber/WhatsApp linkove (prvi od dva navedena)
-//centriraj ikonice u odnosu na naslov kontakti
 const VODECI_BROJ = '381628715791';
 
 const Kontakt = () => {

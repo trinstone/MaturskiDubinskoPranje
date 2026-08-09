@@ -1,21 +1,110 @@
 nav {
-    position: fixed;
-    top: 0;
-    left: 5vw;       
-    right: 5vw;      
-    padding: 15px;
-    align-items: center;
-    background-color: black;
-    z-index: 1;
-    max-width: calc(100% - 10vw); 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(22, 99, 188, 0.08);
+}
+
+.nav-sadrzaj {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.5rem;
+}
+
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-linkovi {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-linkovi a {
+  color: #1B2430;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-linkovi a:hover {
+  color: #1663BC;
+  border-bottom-color: #1663BC;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #1663BC;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-hamburger.otvoren span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.nav-hamburger.otvoren span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.otvoren span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 700px) {
+  .nav-hamburger {
+    display: flex;
   }
-  
-  nav a {
-    color: white;
-    margin-left: 12px;
-    text-decoration: none;
+
+  .nav-linkovi {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #ffffff;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    transition: max-height 0.3s ease;
   }
-  
-  nav a:hover {
-    border-bottom: 3px solid white;
+
+  .nav-linkovi.prikazano {
+    max-height: 260px;
   }
+
+  .nav-linkovi a {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #EDF1F7;
+    border-radius: 0;
+  }
+
+  .nav-linkovi a:hover {
+    background-color: #F5F8FC;
+  }
+}

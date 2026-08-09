@@ -1,122 +1,154 @@
+:root {
+  --plava-tamna: #1663BC;
+  --plava-svetla: #2E86DE;
+  --pozadina: #F5F8FC;
+  --tekst: #1B2430;
+  --tekst-siva: #5B6774;
+  --bela: #ffffff;
+  --senka: 0 6px 20px rgba(22, 99, 188, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: black;
-  color: white;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  text-align: center;
+  background-color: var(--pozadina);
+  color: var(--tekst);
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom: 10vw;
 }
-main{
-  padding-top: 1%;
-  min-height: 80vh;
+
+main {
+  padding-top: clamp(4.5rem, 4rem + 2vw, 6.5rem);
+  min-height: 70vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+  padding-right: clamp(1rem, 0.5rem + 2vw, 2.5rem);
 }
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: clamp(15px, 14px + 0.3vw, 17px);
 }
 
+/* headings — fluid scaling, no breakpoint jumps */
 h1 {
-  text-align: center;
+  text-transform: uppercase;
+  color: var(--plava-tamna);
+  letter-spacing: 0.5px;
+  font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
 }
-
-#pozadinaMargina1{
-  position: fixed;
-  bottom: 0;
-  left: 0; 
-  width: 5vw;
-  height: 100%; 
-  z-index: -1; 
-}
-
-#pozadinaMargina2{
-  position: fixed;
-  bottom: 0; 
-  right: 0;
-  width: 5vw;
-  height: 100%; 
-  z-index: -1; 
-}
-
-.slicica1 {
-  float: left;
-  width: 17vw;
-  padding-top: 3%;
-}
-
-.slicica2 {
-  float: left;
-  width: 15vw;
-  vertical-align: bottom;
-}
-
-.slicica3 {
-  float: right;
-  width: 10vw;
-  vertical-align: bottom;
-}
-
-.slicica4 {
-  float: right;
-  width: 15vw;
-  vertical-align: bottom;
-}
-
-#kontakt {
-  width: 100%;
-  height: 10vw;
-  background-color: black;
-  color: white;
-  border-top: 0.3vw solid white;
-  padding: 1rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-
 h2 {
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.9rem);
+}
+h3 {
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+}
+h2, h3 {
+  color: var(--plava-tamna);
+}
+h1, h2, h3 {
   text-align: center;
-  color: white;
-  margin-bottom: 10px;
 }
 
-label {
+/* logo */
+.logo {
+  height: auto;
+  border-radius: 10px;
+}
+
+/* table styling */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2.5rem auto;
+  width: 100%;
+  max-width: 640px;
+  background: var(--bela);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--senka);
+}
+
+caption {
+  background-color: var(--plava-tamna);
+  color: var(--bela);
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  padding: 0.9rem 1rem;
   font-weight: bold;
-  color: white;
+}
+
+thead th {
+  background-color: var(--plava-tamna);
+  color: var(--bela);
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 0.9rem 1rem;
+}
+
+tbody td {
+  background-color: var(--bela);
+  color: var(--tekst);
+  text-align: center;
+  font-size: 1.05rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #EDF1F7;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(even) td {
+  background-color: #F7FAFD;
+}
+
+tbody tr:hover td {
+  background-color: #EAF3FD;
+}
+
+ul { list-style-type: none; padding: 0; }
+
+/* note / info card */
+.sekcija {
+  display: block;
+  background-color: var(--bela);
+  border: 1px solid #E3EAF3;
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
   text-align: left;
+  margin: 1.5rem auto;
+  max-width: 640px;
+  box-shadow: var(--senka);
+}
+
+.sekcija ol { margin: 0; padding-left: 1.2rem; }
+.sekcija li { margin: 0.35rem 0; }
+
+.hover-scale { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.hover-scale:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+.logo {
+  width: clamp(2.6rem, 2.2rem + 1.5vw, 4.2rem);
 }
 
 table {
-  align-self: center;
-  border-collapse: separate;
-  border-spacing: 10px;
-  margin: 40px auto;
-  width: auto;
-  padding-right: 20px;
-}
-
-th,
-td {
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  font-size: 1.3vw;
-  border-radius: 5px;
-  min-width: 100px;
-  min-height: 80px;
-  padding: 10px;
-}
-
-ul {
-  list-style-type: none;
+  font-size: clamp(0.85rem, 0.8rem + 0.3vw, 1rem);
 }

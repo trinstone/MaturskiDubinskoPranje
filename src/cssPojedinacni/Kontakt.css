@@ -1,0 +1,111 @@
+#kontakt {
+  width: 100%;
+  background-color: #1663BC;
+  color: #ffffff;
+  padding: 2rem 1.5rem 2.75rem;
+  box-sizing: border-box;
+  margin-top: auto;
+  position: relative;
+}
+
+#kontakt h3 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.kontakt-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.kontakt-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.kontakt-left p {
+  margin: 0;
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.25rem);
+}
+
+.kontakt-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* svi kontakt ikonica badge-ovi su iste veličine, bez obzira na img/svg */
+.kontakt-ikonica {
+  width: 2.6rem;
+  height: 2.6rem;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.kontakt-icons a:hover .kontakt-ikonica {
+  transform: scale(1.12);
+}
+
+.kontakt-right {
+  text-align: right;
+}
+
+.kontakt-ig-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.25rem);
+}
+
+.kontakt-ig-link:hover {
+  text-decoration: underline;
+}
+
+#kontakt p a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#kontakt p a:hover {
+  text-decoration: underline;
+}
+
+.kontakt-vodeni-zig {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 600px) {
+  .kontakt-container {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .kontakt-left,
+  .kontakt-right {
+    text-align: center;
+  }
+
+  .kontakt-vodeni-zig {
+    position: static;
+    display: block;
+    text-align: center;
+    margin-top: 1.2rem;
+  }
+}

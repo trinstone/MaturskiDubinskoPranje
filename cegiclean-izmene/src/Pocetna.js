@@ -28,20 +28,20 @@ const zastoMi = [
 
 const akcije = [
     {
-        naslov: 'Dečija auto-sedišta i kolica',
-        opis: 'Bezbednost i higijena idu zajedno — pranje dečijeg auto-sedišta i kolica uvek je besplatno uz svaku porudžbinu.',
+        naslov: 'Dečija auto-sedišta',
+        opis: 'Bezbednost i higijena idu zajedno — pranje dečijeg auto-sedišta je uvek besplatno uz svaku porudžbinu.',
         stalna: true,
     },
     {
         naslov: 'Pomagala za osobe sa invaliditetom',
-        opis: 'Invalidska kolica i ortopedska pomagala čistimo besplatno, jer znamo koliko su važna u svakodnevnom životu.',
+        opis: 'Invalidska kolica i ortopedska pomagala čistimo uz poseban popust, jer znamo koliko su važna u svakodnevnom životu.',
         stalna: true,
     },
-    /*{
+    {
         naslov: 'Letnja akcija',
         opis: '15% popusta na dubinsko pranje tepiha i tvrdih podnih površina, do kraja avgusta.',
         stalna: false,
-    },*/
+    },
 ];
 
 const Pocetna = () => {
